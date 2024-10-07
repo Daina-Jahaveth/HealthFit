@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Usuario</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- Estilos de Flatpickr -->
+
+  <style>
+    body {
+      background-color: #f2f2f2; /* Color de fondo suave */
+      color: #343a40; /* Color de texto oscuro */
+      font-family: Arial, sans-serif; /* Fuente */
+    }
+
+    header {
+      background-color: #343a40; /* Color de fondo del header */
+    }
+
+    .container {
+      margin-top: 30px; /* Espacio superior */
+    }
+
+    .form-container {
+      max-width: 450px; /* Ancho máximo del contenedor */
+      margin: 30px auto; /* Centrando el contenedor */
+      padding: 30px; /* Relleno */
+      background: white; /* Fondo blanco para el formulario */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    }
+
+    h2 {
+      text-align: center; /* Centrar título */
+      color: #ff9800; /* Color del título */
+      margin-bottom: 20px; /* Espacio inferior */
+    }
+
+    .profile-picture {
+      width: 150px; /* Ancho de la imagen de perfil */
+      height: 150px; /* Alto de la imagen de perfil */
+      border-radius: 50%; /* Bordes redondeados */
+      object-fit: cover; /* Mantener proporciones */
+      cursor: pointer; /* Cambiar cursor al pasar por encima */
+      margin-bottom: 10px; /* Espacio reducido abajo */
+      transition: box-shadow 0.3s ease-in-out; /* Transición suave */
+      background-color: #eaeaea; /* Fondo claro mientras se carga la imagen */
+      position: relative; /* Para posicionar el ícono del lápiz */
+    }
+
+    .profile-picture:hover {
+      box-shadow: 0px 0px 15px rgba(255, 152, 0, 0.8); /* Efecto hover */
+    }
+
+    .edit-icon {
+      position: absolute; /* Posición absoluta para colocar el ícono del lápiz */
+      bottom: 10px; /* Ajustar la posición desde la parte inferior */
+      right: 10px; /* Ajustar la posición desde la derecha */
+      width: 20px; /* Ancho del ícono */
+      height: 20px; /* Alto del ícono */
+      cursor: pointer; /* Cambiar cursor al pasar por encima */
+      fill: #000; /* Color negro para el ícono */
+      transition: transform 0.2s; /* Transición suave para el hover */
+      opacity: 0.8; /* Sutileza en el color */
+    }
+
+    .edit-icon:hover {
+      transform: scale(1.1); /* Aumentar ligeramente al pasar el mouse */
+      opacity: 1; /* Aumentar opacidad al hacer hover */
+    }
+
+    .form-label {
+      font-weight: bold; /* Etiquetas en negrita */
+    }
+
+    .btn-warning {
+      background-color: #ff9800; /* Color del botón */
+      border: none; /* Sin borde */
+      padding: 10px 20px; /* Espaciado interno */
+      border-radius: 5px; /* Bordes redondeados */
+    }
+
+    .btn-warning:hover {
+      background-color: #e68a00; /* Color del botón al pasar el mouse */
+      transform: scale(1.05); /* Efecto de aumento */
+      transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+    }
+
+    .form-check {
+      text-align: left; /* Alinear texto a la izquierda */
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand text-uppercase" href="index.html">HealthFit</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Mi Perfil</h2>
+
+    <div class="form-container text-center">
+      <!-- Imagen de perfil (clic para cambiar) -->
+      <div style="position: relative; display: inline-block;">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" alt="Foto de Perfil" class="profile-picture" id="profile-pic">
+        <!-- Ícono de lápiz en color negro y mejor diseño -->
+        <svg class="edit-icon" onclick="document.getElementById('upload-image').click();" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75l11.7-11.7-3.75-3.75L3 17.25zm15.6-9.6c.39-.39.39-1.02 0-1.41l-1.5-1.5c-.39-.39-1.02-.39-1.41 0l-1.5 1.5 3.75 3.75 1.5-1.5z"/></svg>
+      </div>
+
+      <!-- Campo para subir imagen -->
+      <input type="file" id="upload-image" accept="image/*" onchange="loadImage(event)" style="display: none;">
+
+      <form id="profile-form" class="mt-4">
+        <!-- Campos de nombre y apellido -->
+        <div class="mb-3">
+          <label for="first-name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="first-name" placeholder="Nombre" required>
+        </div>
+        <div class="mb-3">
+          <label for="last-name" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="last-name" placeholder="Apellido" required>
+        </div>
+
+        <!-- Campo de fecha de nacimiento (Flatpickr) -->
+        <div class="mb-3">
+          <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
+          <input type="text" class="form-control" id="birthdate" placeholder="Selecciona tu fecha" required>
+        </div>
+
+        <!-- Casilla de verificación para ser recordado -->
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="reminder">
+          <label for="reminder" class="form-check-label">Quiero ser recordado de realizar mi rutina diaria</label>
+        </div>
+        
+        <button type="submit" class="btn btn-warning btn-lg mt-4">Actualizar Perfil</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Bootstrap y Flatpickr -->
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    // Cargar la imagen seleccionada
+    function loadImage(event) {
+      const img = document.getElementById('profile-pic');
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        img.src = e.target.result; // Establecer la imagen como la fuente
+        localStorage.setItem('profilePic', e.target.result); // Guardar en localStorage
+      }
+
+      if (file) {
+        reader.readAsDataURL(file); // Leer el archivo como URL
+      }
+    }
+
+    // Flatpickr configuración para el campo de fecha de nacimiento
+    flatpickr("#birthdate", {
+      dateFormat: "Y-m-d", // Formato minimalista de la fecha
+      maxDate: "today", // No permitir fechas futuras
+      locale: {
+        firstDayOfWeek: 1 // Lunes como primer día de la semana
+      }
+    });
+
+    // Validación del formulario y almacenamiento de datos
+    document.getElementById('profile-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevenir el envío por defecto del formulario
+
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const birthdate = document.getElementById('birthdate').value;
+      const reminder = document.getElementById('reminder').checked;
+
+      // Validación básica
+      if (!firstName || !lastName || !birthdate) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      // Guardar los datos en localStorage
+      const userData = { firstName, lastName, birthdate, reminder };
+      localStorage.setItem('userData', JSON.stringify(userData));
+
+      alert('Perfil actualizado correctamente');
+      
+      // Redirigir a la página de la encuesta después de actualizar el perfil
+      window.location.href = 'survey.html';
+    });
+
+    // Cargar la imagen de perfil desde localStorage al cargar la página
+    window.onload = function() {
+      const savedProfilePic = localStorage.getItem('profilePic');
+      if (savedProfilePic) {
+        document.getElementById('profile-pic').src = savedProfilePic; // Mostrar imagen guardada
+      } else {
+        document.getElementById('profile-pic').src = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'; // Mostrar imagen predeterminada
+      }
+    }
+  </script>
+</body>
+</html>

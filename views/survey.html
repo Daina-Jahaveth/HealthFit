@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta de Salud</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css"> <!-- Archivo CSS personalizado -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> <!-- Para el calendario -->
+  <style>
+    body {
+      background-color: #f8f9fa; /* Color de fondo suave */
+      color: #343a40; /* Color de texto oscuro */
+      font-family: Arial, sans-serif; /* Fuente */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      flex-direction: column; /* Asegúrate de que el header esté en la parte superior */
+    }
+
+    header {
+      background-color: #343a40; /* Color de fondo del header */
+      padding: 10px;
+      text-align: center; /* Centrar texto */
+    }
+
+    header .navbar-brand {
+      color: #fff; /* Color del texto del encabezado */
+      font-weight: bold; /* Hacer el texto más grueso */
+    }
+
+    main {
+      display: flex; /* Utilizar flexbox para el diseño */
+      flex: 1; /* Hacer que el main ocupe todo el espacio restante */
+    }
+
+    .image-container {
+      width: 50%; /* Las imágenes ocupan el 50% a la izquierda */
+      position: relative; /* Para transiciones suaves */
+      overflow: hidden; /* Ocultar el desbordamiento */
+    }
+
+    .image-container img {
+      width: 100%; /* Ocupa todo el ancho del contenedor */
+      height: 100%; /* Ocupa toda la altura del contenedor */
+      object-fit: cover; /* Mantener proporciones */
+      position: absolute; /* Posiciona las imágenes una sobre la otra */
+      top: 0;
+      left: 0;
+      opacity: 0; /* Inicialmente ocultas */
+      transition: opacity 1.5s ease-in-out; /* Transición suave para cambiar imágenes */
+    }
+
+    .image-container img.active {
+      opacity: 1; /* Imagen activa visible */
+    }
+
+    .form-container {
+      width: 50%; /* La encuesta ocupa el 50% a la derecha */
+      background: white; /* Fondo blanco para el formulario */
+      padding: 20px; /* Relleno */
+      border-left: 2px solid #ddd; /* Borde izquierdo */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      color: #ff9800; /* Color del título */
+      margin-bottom: 20px; /* Espacio inferior */
+      text-align: center; /* Centrar título */
+    }
+
+    .profile-picture {
+      width: 100px; /* Ancho de la imagen de perfil */
+      height: 100px; /* Alto de la imagen de perfil */
+      border-radius: 50%; /* Bordes redondeados */
+      object-fit: cover; /* Mantener proporciones */
+      margin: 0 auto 20px; /* Centrar la imagen */
+    }
+
+    .btn-warning {
+      background-color: #ff9800; /* Color del botón */
+      border: none; /* Sin borde */
+      width: 100%; /* Botón ocupa todo el ancho */
+    }
+
+    .btn-warning:hover {
+      background-color: #e68a00; /* Color del botón al pasar el mouse */
+    }
+
+    .form-control {
+      border-radius: 0; /* Bordes rectos para los campos de entrada */
+      padding: 5px; /* Relleno reducido */
+      border: 1px solid #000; /* Borde negro */
+      background-color: #fff; /* Fondo blanco */
+      color: #000; /* Texto negro */
+      margin-bottom: 10px; /* Espacio inferior */
+    }
+
+    .form-check-label {
+      margin-bottom: 0; /* Reducir espacio inferior */
+    }
+
+    .option-container {
+      border: 1px solid #000; /* Borde negro */
+      border-radius: 0; /* Bordes rectos */
+      padding: 10px; /* Espaciado interno */
+      margin-bottom: 10px; /* Espacio inferior entre opciones */
+      cursor: pointer; /* Cambiar cursor al pasar por encima */
+      transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+      background-color: #fff; /* Fondo blanco */
+      text-align: center; /* Centrar texto */
+    }
+
+    .option-container:hover {
+      background-color: #eaeaea; /* Fondo gris claro al pasar el mouse */
+    }
+
+    .selected {
+      background-color: #000; /* Fondo negro para opciones seleccionadas */
+      color: #fff; /* Texto blanco para opciones seleccionadas */
+      border-color: #fff; /* Borde blanco para opciones seleccionadas */
+    }
+
+    .inline-inputs {
+      display: flex; /* Para alinear los inputs en una fila */
+      justify-content: space-between; /* Espacio entre los inputs */
+      margin-bottom: 20px; /* Espacio inferior */
+    }
+
+    .inline-inputs .form-control {
+      flex: 1; /* Ocupa el mismo espacio */
+      margin-right: 5px; /* Espacio entre inputs */
+      min-width: 90px; /* Ancho mínimo */
+    }
+
+    .inline-inputs .form-control:last-child {
+      margin-right: 0; /* Sin margen en el último input */
+    }
+
+    /* Estilos para los contenedores de opciones */
+    .options-container {
+      display: flex; /* Mostrar en columnas */
+      flex-wrap: wrap; /* Permitir que las opciones se envuelvan */
+      gap: 10px; /* Espacio entre los cuadros */
+    }
+
+    /* Estilo del modal */
+    .modal-content {
+      padding: 20px; /* Espaciado interno del modal */
+    }
+
+    /* Estilo de la notificación */
+    .notification {
+      display: none; /* Ocultar por defecto */
+      position: fixed; /* Fijar la posición */
+      top: 20px; /* Desde la parte superior */
+      left: 50%; /* Centrar horizontalmente */
+      transform: translateX(-50%); /* Ajustar para centrar */
+      background-color: #ff9800; /* Fondo de la notificación */
+      color: white; /* Texto blanco */
+      padding: 10px 20px; /* Espaciado interno */
+      border-radius: 5px; /* Bordes redondeados */
+      z-index: 1000; /* Asegurar que esté en la parte superior */
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">HealthFit</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contenedor de las imágenes -->
+    <div class="image-container">
+      <img src="https://web-back.perfectgym.com/sites/default/files/styles/460x/public/survey%20%286%29.jpg?itok=UOQy-zba" class="active" alt="Ejercicio 1">
+      <img src="https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/11/cardio-class-woman-lunges-header.jpg?w=1155&h=1528" alt="Ejercicio 2">
+      <img src="https://d.newsweek.com/en/full/2009769/woman-running-along-seaside-trail.jpg?w=1600&h=1600&q=88&f=ffd68f054c1a10a3bd75da408f9ef542" alt="Ejercicio 3">
+    </div>
+
+    <!-- Contenedor del formulario -->
+    <div class="form-container">
+      <h2>Completa tu Información</h2>
+      <!-- Mostrar imagen de perfil -->
+      <img src="assets/img/default-profile.png" alt="Foto de Perfil" class="profile-picture" id="profile-pic">
+
+      <form id="health-survey" class="mt-4">
+        <!-- Campo de Edad -->
+        <div class="mb-3">
+          <label for="age" class="form-label">Edad</label>
+          <input type="number" class="form-control" id="age" placeholder="30" required>
+        </div>
+
+        <!-- Campo de Peso y Altura juntos -->
+        <div class="inline-inputs">
+          <div>
+            <label for="weight" class="form-label">Peso (kg)</label>
+            <input type="number" class="form-control" id="weight" placeholder="70" required>
+          </div>
+          <div>
+            <label for="height" class="form-label">Altura (cm)</label>
+            <input type="number" class="form-control" id="height" placeholder="175" required>
+          </div>
+        </div>
+
+        <!-- Campo de Sexo -->
+        <div class="mb-3">
+          <label for="sex" class="form-label">Sexo biológico</label>
+          <select id="sex" class="form-select" required>
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+            <option value="other">Otro</option>
+          </select>
+        </div>
+
+        <!-- Objetivo -->
+        <div class="mb-3">
+          <label for="objective" class="form-label">Objetivo</label>
+          <select id="objective" class="form-select" required>
+            <option value="perder_peso">Perder Peso</option>
+            <option value="mantener_peso">Mantener Peso</option>
+            <option value="aumentar_masa">Aumentar Masa Muscular</option>
+            <option value="mejorar_resistencia">Mejorar Resistencia</option>
+          </select>
+        </div>
+
+        <!-- Tiempo Disponible -->
+        <h5>Tiempo Disponible para Ejercicio</h5>
+        <div class="options-container">
+          <div class="option-container" onclick="selectTime('30 minutos')">30 minutos</div>
+          <div class="option-container" onclick="selectTime('1 hora')">1 hora</div>
+          <div class="option-container" onclick="selectTime('1.5 horas')">1.5 horas</div>
+          <div class="option-container" onclick="selectTime('2 horas')">2 horas</div>
+        </div>
+
+        <!-- Condiciones Médicas -->
+        <h5>Condiciones Médicas</h5>
+        <div class="options-container">
+          <div class="option-container" id="diabetes" onclick="toggleCondition('diabetes')">Diabetes</div>
+          <div class="option-container" id="hypertension" onclick="toggleCondition('hypertension')">Hipertensión</div>
+          <div class="option-container" id="heart-disease" onclick="toggleCondition('heart-disease')">Enfermedad Cardíaca</div>
+          <div class="option-container" id="asthma" onclick="toggleCondition('asthma')">Asma</div>
+          <div class="option-container" onclick="openOtherConditionModal()">Otro</div>
+          <div class="option-container" id="none" onclick="toggleCondition('none')">Ninguna</div>
+        </div>
+
+        <!-- Condiciones Físicas -->
+        <h5>Condiciones Físicas</h5>
+        <div class="options-container">
+          <div class="option-container" id="obesity" onclick="toggleCondition('obesity')">Obesidad</div>
+          <div class="option-container" id="hypotonia" onclick="toggleCondition('hypotonia')">Hipotonía</div>
+          <div class="option-container" id="fatigue" onclick="toggleCondition('fatigue')">Fatiga Crónica</div>
+          <div class="option-container" id="injury" onclick="toggleCondition('injury')">Lesión Previa</div>
+          <div class="option-container" onclick="openOtherPhysicalConditionModal()">Otro</div>
+          <div class="option-container" id="none-physical" onclick="toggleCondition('none-physical')">Ninguna</div>
+        </div>
+
+        <!-- Nivel de Condición Física -->
+        <h5>Nivel de Condición Física</h5>
+        <div class="options-container">
+          <div class="option-container" id="beginner" onclick="toggleCondition('beginner')">Principiante</div>
+          <div class="option-container" id="intermediate" onclick="toggleCondition('intermediate')">Intermedio</div>
+          <div class="option-container" id="advanced" onclick="toggleCondition('advanced')">Avanzado</div>
+        </div>
+
+        <!-- Tipo de Cuerpo -->
+        <h5>Tipo de Cuerpo</h5>
+        <div class="options-container">
+          <div class="option-container" onclick="openBodyTypeHelp()">No sé, necesito ayuda</div>
+          <div class="option-container" id="ectomorph" onclick="toggleCondition('ectomorph')">Ectomorfo</div>
+          <div class="option-container" id="mesomorph" onclick="toggleCondition('mesomorph')">Mesomorfo</div>
+          <div class="option-container" id="endomorph" onclick="toggleCondition('endomorph')">Endomorfo</div>
+        </div>
+
+        <!-- Botón de envío del formulario -->
+        <button type="submit" class="btn btn-warning btn-lg">Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal para especificar condición médica -->
+  <div class="modal fade" id="otherConditionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Especifica tu Condición</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="otherConditionInput" class="form-control" placeholder="Especifica tu condición">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" onclick="submitOtherCondition()">Enviar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para especificar condición física -->
+  <div class="modal fade" id="otherPhysicalConditionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Especifica tu Condición Física</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="otherPhysicalConditionInput" class="form-control" placeholder="Especifica tu condición física">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" onclick="submitOtherPhysicalCondition()">Enviar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para ayuda a identificar el tipo de cuerpo -->
+  <div class="modal fade" id="bodyTypeHelpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ayuda para Identificar tu Tipo de Cuerpo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Selecciona tu tipo de cuerpo:</p>
+          <ul>
+            <li>Ectomorfo: Cuerpo delgado y ligero, con poca grasa corporal.</li>
+            <li>Mesomorfo: Cuerpo muscular y atlético, fácil de ganar masa muscular.</li>
+            <li>Endomorfo: Cuerpo más redondeado, tiende a acumular grasa.</li>
+          </ul>
+          <img src="https://www.example.com/tipo-de-cuerpo.jpg" alt="Ejemplos de tipos de cuerpo" class="img-fluid"> <!-- Cambia la URL de la imagen según sea necesario -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flatpickr JS para el calendario de fecha de nacimiento -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Cargar la imagen de perfil desde localStorage
+    window.onload = function() {
+      const savedProfilePic = localStorage.getItem('profilePic');
+      const img = document.getElementById('profile-pic');
+      if (savedProfilePic) {
+        img.src = savedProfilePic; // Mostrar imagen guardada
+      } else {
+        img.src = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'; // Mostrar imagen predeterminada
+      }
+    };
+
+    // Función para seleccionar el tiempo disponible
+    function selectTime(time) {
+      const options = document.querySelectorAll('.options-container .option-container');
+      options.forEach(option => {
+        option.classList.remove('selected'); // Remover clase de selección
+      });
+      const selectedOption = Array.from(options).find(option => option.innerText === time);
+      selectedOption.classList.add('selected'); // Agregar clase de selección
+      localStorage.setItem('availableTime', time); // Almacenar en localStorage
+    }
+
+    // Función para alternar condiciones médicas
+    function toggleCondition(condition) {
+      const element = document.getElementById(condition);
+      if (element) {
+        element.classList.toggle('selected'); // Alternar clase de selección
+      }
+    }
+
+    // Función para abrir el modal de especificar condición
+    function openOtherConditionModal() {
+      const modal = new bootstrap.Modal(document.getElementById('otherConditionModal'));
+      modal.show();
+    }
+
+    // Función para abrir el modal de especificar condición física
+    function openOtherPhysicalConditionModal() {
+      const modal = new bootstrap.Modal(document.getElementById('otherPhysicalConditionModal'));
+      modal.show();
+    }
+
+    // Función para abrir el modal de ayuda para identificar tipo de cuerpo
+    function openBodyTypeHelp() {
+      const modal = new bootstrap.Modal(document.getElementById('bodyTypeHelpModal'));
+      modal.show();
+    }
+
+    // Función para enviar la condición médica
+    function submitOtherCondition() {
+      const condition = document.getElementById('otherConditionInput').value;
+      alert(`Condición médica especificada: ${condition}. Su información será revisada.`);
+      // Aquí puedes agregar lógica para manejar la condición médica especificada
+    }
+
+    // Función para enviar la condición física
+    function submitOtherPhysicalCondition() {
+      const condition = document.getElementById('otherPhysicalConditionInput').value;
+      alert(`Condición física especificada: ${condition}. Su información será revisada.`);
+      // Aquí puedes agregar lógica para manejar la condición física especificada
+    }
+
+    // Validar y enviar el formulario
+    document.getElementById('health-survey').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevenir el envío por defecto del formulario
+
+      // Obtener valores de las opciones seleccionadas
+      const weight = document.getElementById('weight').value;
+      const height = document.getElementById('height').value;
+      const sex = document.getElementById('sex').value;
+      const age = document.getElementById('age').value; // Obtener la edad
+      const objective = document.getElementById('objective').value; // Obtener el objetivo
+      const availableTime = localStorage.getItem('availableTime'); // Obtener el tiempo seleccionado
+      const medicalConditions = []; // Array para condiciones médicas
+      const physicalConditions = []; // Array para condiciones físicas
+
+      // Lógica para obtener condiciones médicas seleccionadas
+      const conditions = ['diabetes', 'hypertension', 'heart-disease', 'asthma', 'none'];
+      conditions.forEach(condition => {
+        const conditionElement = document.getElementById(condition);
+        if (conditionElement && conditionElement.classList.contains('selected')) {
+          medicalConditions.push(condition);
+        }
+      });
+
+      // Lógica para obtener condiciones físicas seleccionadas
+      const physicalConditionsArray = ['obesity', 'hypotonia', 'fatigue', 'injury', 'none-physical'];
+      physicalConditionsArray.forEach(condition => {
+        const conditionElement = document.getElementById(condition);
+        if (conditionElement && conditionElement.classList.contains('selected')) {
+          physicalConditions.push(condition);
+        }
+      });
+
+      // Verificar si se especificó otra condición
+      if (medicalConditions.includes('other')) {
+        const otherConditionInput = document.getElementById('otherConditionInput').value;
+        if (otherConditionInput) {
+          alert(`Condición médica especificada: ${otherConditionInput}. Su información será revisada.`);
+        } else {
+          alert('Por favor, especifica tu condición médica.'); // Recordatorio si no se llena el campo
+          return; // Detener el envío si falta información
+        }
+      }
+
+      // Verificar si se especificó otra condición física
+      if (physicalConditions.includes('other')) {
+        const otherPhysicalConditionInput = document.getElementById('otherPhysicalConditionInput').value;
+        if (otherPhysicalConditionInput) {
+          alert(`Condición física especificada: ${otherPhysicalConditionInput}. Su información será revisada.`);
+        } else {
+          alert('Por favor, especifica tu condición física.'); // Recordatorio si no se llena el campo
+          return; // Detener el envío si falta información
+        }
+      }
+
+      // Guardar en localStorage
+      const surveyData = {
+        weight,
+        height,
+        sex,
+        age, // Agregar edad a los datos
+        objective, // Agregar objetivo a los datos
+        availableTime,
+        medicalConditions,
+        physicalConditions
+      };
+      localStorage.setItem('surveyData', JSON.stringify(surveyData));
+
+      // Redireccionar basado en la selección
+      if (medicalConditions.includes('other') || physicalConditions.includes('other')) {
+        alert('Su información será revisada por un profesional y será notificado cuando su plan de dieta y ejercicio esté listo.');
+        window.location.href = 'index.html'; // Redirigir al inicio
+      } else {
+        window.location.href = 'plan.html'; // Redirigir al plan
+      }
+    });
+  </script>
+
+  <script src="../assets/js/main.js"></script> <!-- Archivo JavaScript personalizado -->
+  <!-- Cargar Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
