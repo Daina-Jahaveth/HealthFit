@@ -120,29 +120,25 @@
             margin-bottom: 40px;
         }
 
+        /* Tarjetas de Información */
+        .info-card {
+            margin: 20px; /* Espacio entre tarjetas */
+            border: 1px solid #ddd; /* Borde gris claro */
+            border-radius: 15px; /* Bordes redondeados */
+            background-color: #ffffff; /* Fondo blanco */
+            transition: box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave al pasar el mouse */
+        }
+
         /* Footer */
         footer {
             background-color: #000;
             color: #fff;
             padding: 20px;
             text-align: center;
-        }
-
-        /* Animaciones para las imágenes */
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .image-container img.active {
-            opacity: 1;
-        }
-
-        /* Estilos para el carrusel */
-        .carousel {
-            margin-bottom: 20px; /* Espacio inferior para el carrusel */
         }
     </style>
 </head>
@@ -181,7 +177,7 @@
             <h2>Lo que te brindamos en HealthFit</h2>
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="info-card">
                         <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
                         <div class="card-body">
                             <h4 class="card-title">Planes Personalizados</h4>
@@ -190,7 +186,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="info-card">
                         <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
                         <div class="card-body">
                             <h4 class="card-title">Monitoreo en Tiempo Real</h4>
@@ -199,7 +195,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="info-card">
                         <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
                         <div class="card-body">
                             <h4 class="card-title">Asesoría Profesional</h4>
@@ -228,7 +224,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/ejercicio-grupo-gente-sala_23-2147719281.jpg" alt="Ejercicios Básicos">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
                         <div class="card-body">
                             <h4 class="card-title">Ejercicios Básicos</h4>
                             <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
@@ -282,11 +278,6 @@
                 document.body.classList.remove('white-background');
             }
         });
-    </script>
-</body>
-
-</html>
-
     </script>
 </body>
 
