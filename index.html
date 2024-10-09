@@ -13,6 +13,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             overflow-x: hidden; /* Evitar scroll horizontal */
+            transition: background-color 0.3s ease;
         }
 
         header {
@@ -91,7 +92,6 @@
             border-radius: 10px;
             margin-top: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease; /* Efecto al hacer hover */
         }
 
         #benefits h2 {
@@ -166,6 +166,8 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            transition: transform 0.3s ease;
+            position: relative; /* Permite que el footer se desplace al hacer scroll */
         }
 
         /* Animación para tarjetas */
