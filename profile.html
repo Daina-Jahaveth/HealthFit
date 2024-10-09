@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
-        /* Estilos omitidos para mayor claridad */
         .form-container {
             max-width: 500px;
             margin: 0 auto;
@@ -64,7 +63,7 @@
                 <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
                     alt="Foto de Perfil" class="profile-picture" id="profile-pic">
                 <svg class="edit-icon" onclick="document.getElementById('upload-image').click();" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
+                    viewBox="0 0 24 24" width="24" height="24" fill="#007bff">
                     <path d="M3 17.25V21h3.75l11.7-11.7-3.75-3.75L3 17.25zm15.6-9.6c.39-.39.39-1.02 0-1.41l-1.5-1.5c-.39-.39-1.02-.39-1.41 0l-1.5 1.5 3.75 3.75 1.5-1.5z" />
                 </svg>
             </div>
@@ -75,10 +74,10 @@
             <form id="profile-form">
                 <!-- Campos del formulario -->
                 <label for="first-name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Nombre" required>
+                <input type="text" class="form-control mb-3" id="first-name" placeholder="Nombre" required>
 
                 <label for="last-name" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Apellido" required>
+                <input type="text" class="form-control mb-3" id="last-name" placeholder="Apellido" required>
 
                 <div class="mb-3">
                     <label class="form-label">Género</label>
@@ -97,7 +96,7 @@
                 </div>
 
                 <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-control" id="birthdate" placeholder="Selecciona tu fecha" required>
+                <input type="text" class="form-control mb-3" id="birthdate" placeholder="Selecciona tu fecha" required>
 
                 <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="reminder">
@@ -122,7 +121,7 @@
         };
 
         document.getElementById('profile-form').addEventListener('submit', function (event) {
-            // Elimina event.preventDefault() para permitir el envío del formulario
+            event.preventDefault();
             alert('Perfil actualizado con éxito.');
             
             // Redirigir a la encuesta después de la actualización
