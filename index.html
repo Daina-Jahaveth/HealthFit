@@ -74,12 +74,13 @@
             padding: 15px 30px;
             font-size: 1.25rem;
             border: none;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn-hero:hover {
             background-color: #e68a00;
+            transform: scale(1.05);
         }
 
         /* Benefits Section */
@@ -90,6 +91,7 @@
             border-radius: 10px;
             margin-top: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease; /* Efecto al hacer hover */
         }
 
         #benefits h2 {
@@ -105,6 +107,7 @@
             box-shadow: none;
             border: none;
             overflow: hidden;
+            transition: transform 0.3s ease; /* Efecto al hacer hover */
         }
 
         .info-card img {
@@ -181,7 +184,6 @@
         .interest-card {
             animation: fadeIn 0.5s forwards; /* Aplica la animación */
         }
-
     </style>
 </head>
 
@@ -343,4 +345,3 @@
 </body>
 
 </html>
-
