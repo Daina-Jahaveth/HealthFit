@@ -13,7 +13,6 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             overflow-x: hidden; /* Evitar scroll horizontal */
-            transition: background-color 0.3s ease;
         }
 
         header {
@@ -40,6 +39,11 @@
             justify-content: flex-end; /* Alinear opciones a la derecha */
             opacity: 1; /* Mostrar opciones por defecto */
             transition: opacity 0.3s; /* Suaviza la desaparición */
+        }
+
+        header .nav-link {
+            color: white; /* Cambia el color del texto a blanco */
+            margin-left: 15px;
         }
 
         /* Hero Section */
@@ -81,7 +85,6 @@
 
         .btn-hero:hover {
             background-color: #e68a00;
-            transform: scale(1.05);
         }
 
         /* Benefits Section */
@@ -154,6 +157,11 @@
             object-fit: cover; /* Mantener proporciones */
             border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
             border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
+            transition: transform 0.3s ease; /* Transición para el zoom */
+        }
+
+        .interest-card img:hover {
+            transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
         }
 
         .interest-card .card-body {
@@ -176,6 +184,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -280,7 +289,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="interest-card">
-                        <img src="https://example.com/receta-saludable.jpg" alt="Recetas Saludables"> <!-- Cambia a la URL correcta -->
+                        <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
                         <div class="card-body">
                             <h4 class="card-title">Recetas Saludables</h4>
                             <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
@@ -347,4 +356,5 @@
 </body>
 
 </html>
+
 
