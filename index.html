@@ -11,11 +11,12 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4; /* Fondo suave para la página */
         }
 
         header {
             background-color: #000;
-            padding: 10px 20px; /* Header más delgado */
+            padding: 15px 20px; /* Header más delgado */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
@@ -47,6 +48,7 @@
             text-align: center;
             position: relative;
             transition: background-image 1s ease-in-out;
+            animation: fadeIn 1s ease-in;
         }
 
         #hero-section h1 {
@@ -84,6 +86,9 @@
             background-color: #fff;
             text-align: center;
             color: #000;
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 30px; /* Espacio interno */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
 
         #benefits h2 {
@@ -91,18 +96,19 @@
             margin-bottom: 40px;
         }
 
-        .card {
+        .info-card {
             margin: 20px; /* Espacio entre tarjetas */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #ddd; /* Borde gris claro */
+            border-radius: 15px; /* Bordes redondeados */
+            background-color: #ffffff; /* Fondo blanco */
+            transition: box-shadow 0.3s ease;
         }
 
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+        .info-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra suave al pasar el mouse */
         }
 
-        .card img {
+        .info-card img {
             height: 200px;
             object-fit: cover;
             border-top-left-radius: 15px;
@@ -113,6 +119,7 @@
         #te-puede-interesar {
             background-color: #f8f9fa;
             padding: 60px 0;
+            margin-top: 30px; /* Espacio superior */
         }
 
         #te-puede-interesar .interests-title {
@@ -120,17 +127,17 @@
             margin-bottom: 40px;
         }
 
-        /* Tarjetas de Información */
-        .info-card {
+        .interest-card {
             margin: 20px; /* Espacio entre tarjetas */
-            border: 1px solid #ddd; /* Borde gris claro */
             border-radius: 15px; /* Bordes redondeados */
             background-color: #ffffff; /* Fondo blanco */
-            transition: box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
 
-        .info-card:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave al pasar el mouse */
+        .interest-card:hover {
+            transform: scale(1.05); /* Efecto de elevación al pasar el mouse */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
         }
 
         /* Footer */
@@ -139,6 +146,16 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -213,17 +230,7 @@
             <h2 class="interests-title">Te Puede Interesar</h2>
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/sopa-vegetales_23-2147719243.jpg" alt="Recetas Saludables">
-                        <div class="card-body">
-                            <h4 class="card-title">Recetas Saludables</h4>
-                            <p class="card-text">Explora deliciosas y saludables recetas que complementan tu dieta.</p>
-                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
+                    <div class="interest-card">
                         <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
                         <div class="card-body">
                             <h4 class="card-title">Ejercicios Básicos</h4>
@@ -233,12 +240,22 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="interest-card">
                         <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
                         <div class="card-body">
                             <h4 class="card-title">Información Científica</h4>
                             <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
                             <a href="informacion.html" class="btn btn-warning">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://example.com/receta-saludable.jpg" alt="Recetas Saludables"> <!-- Cambia a la URL correcta -->
+                        <div class="card-body">
+                            <h4 class="card-title">Recetas Saludables</h4>
+                            <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
+                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
                         </div>
                     </div>
                 </div>
@@ -282,3 +299,4 @@
 </body>
 
 </html>
+
