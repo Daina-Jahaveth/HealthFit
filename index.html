@@ -4,157 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthFit - Planificador de Dieta y Ejercicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Planificador de Dieta y Ejercicio</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
+            overflow-x: hidden; /* Evitar desplazamiento horizontal */
+            color: #fff; /* Texto blanco */
+            transition: background-color 0.3s; /* Suave transición al cambiar el fondo */
         }
 
         header {
-            background-color: #000;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            position: fixed;
-            top: 0;
+            background-color: rgba(0, 0, 0, 0.85); /* Fondo del header con opacidad */
+            padding: 20px; /* Relleno del header */
+            position: fixed; /* Fijo al inicio */
             width: 100%;
             z-index: 1000;
-            transition: background-color 0.3s; /* Añadido para una transición suave */
-        }
-
-        header.scrolled {
-            background-color: rgba(0, 0, 0, 0.8); /* Cambia el color de fondo al hacer scroll */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+            transition: background-color 0.5s; /* Transición suave */
         }
 
         header .navbar-brand {
-            color: #ff9800;
-            font-weight: bold;
-            font-size: 1.5rem;
+            color: #ff9800; /* Color del texto del encabezado */
+            font-weight: bold; /* Hacer el texto más grueso */
+            font-size: 1.8rem; /* Tamaño de fuente */
+            text-transform: uppercase; /* Transformar a mayúsculas */
         }
 
-        header .nav-link {
-            color: #fff;
-            margin-left: 15px;
-            transition: color 0.3s; /* Transición suave para el color del texto */
+        header .navbar-nav .nav-link {
+            color: #ffffff; /* Color del texto de las opciones de navegación */
+            margin-left: 15px; /* Espacio entre las opciones */
+            font-weight: 500; /* Grosor de letra */
+            transition: color 0.3s; /* Suave transición de color */
         }
 
-        header .nav-link:hover {
-            color: #ff9800; /* Color al pasar el mouse */
+        header .navbar-nav .nav-link:hover {
+            color: #ff9800; /* Cambiar color al pasar el mouse */
         }
 
-        /* Hero Section */
         #hero-section {
-            height: 100vh;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png');
+            text-align: center;
             background-size: cover;
             background-position: center;
-            color: #fff;
-            text-align: center;
-            position: relative;
-            transition: background-image 1s ease-in-out;
-            overflow: hidden; /* Asegúrate de ocultar el desbordamiento */
+            position: relative; /* Para el botón flotante */
+            transition: background-image 1s ease-in-out; /* Transición para el fondo */
         }
 
-        #hero-section h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
+        #hero-section h1,
         #hero-section p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+            transition: opacity 1s ease-in-out; /* Transición para el texto */
         }
 
-        .btn-hero {
-            background-color: #ff9800;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 1.25rem;
-            border: none;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-hero:hover {
-            background-color: #e68a00;
-        }
-
-        /* Benefits Section */
-        section {
-            padding: 60px 0;
-        }
-
-        #benefits {
-            background-color: #fff;
-            text-align: center;
-            color: #000;
+        #benefits,
+        #exercises {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+            padding: 30px 0; /* Relleno reducido */
+            color: black;
+            margin: 0; /* Eliminar márgenes */
         }
 
         #benefits h2 {
-            color: #ff9800;
-            margin-bottom: 40px;
+            color: #ff9800; /* Cambiar el color del texto a un color más visible */
         }
 
         .card {
-            margin: 20px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para tarjetas */
+            margin: 10px; /* Reducción del espaciado entre tarjetas */
+            border: none; /* Sin borde */
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
         }
 
         .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px); /* Efecto de elevación al pasar el mouse */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
         }
 
-        .card img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+        /* Efecto de transición para las imágenes */
+        .card-img-left {
+            max-width: 100%; /* Ajusta el tamaño de la imagen */
+            height: 200px; /* Altura fija para uniformidad */
+            object-fit: cover; /* Mantener proporciones */
+            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
+            border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
+            transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
         }
 
-        /* Exercises Section */
-        #exercises {
-            text-align: center;
+        .card-img-left:hover {
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+            opacity: 0.8; /* Cambia la opacidad al pasar el mouse */
         }
 
-        footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
+        /* Estilos del botón de desplazamiento */
+        .scroll-btn {
+            position: absolute;
+            bottom: 50px; /* Aumentar espacio al fondo */
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        /* Transiciones suaves */
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+        .scroll-btn:hover {
+            color: #ffc107; /* Color del botón al pasar el mouse */
         }
 
-        .image-container img.active {
-            opacity: 1;
+        /* Efectos de parallax */
+        #hero-section {
+            background-image: url('https://your-image-url.com'); /* Cambia esto por tu imagen */
+            background-attachment: fixed; /* Fijar el fondo */
+            background-repeat: no-repeat; /* Sin repetir */
+            background-size: cover; /* Cubrir todo el área */
         }
     </style>
 </head>
 
 <body>
-
-    <!-- HEADER -->
-    <header>
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">HealthFit</a>
+            <a class="navbar-brand text-uppercase" href="index.html">HealthFit</a>
             <nav>
-                <ul class="nav">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta</a></li>
                     <li class="nav-item"><a class="nav-link" href="tracking.html">Monitoreo</a></li>
@@ -166,23 +148,23 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section id="hero-section">
         <div>
-            <h1>¡Bienvenido a HealthFit!</h1>
-            <p>Comienza a mejorar tu salud con un plan adaptado a ti.</p>
-            <a href="profile.html" class="btn btn-hero">Ir al Perfil de Registro</a>
+            <h1 class="display-4">¡Bienvenido a HealthFit!</h1>
+            <p class="lead">Comienza a mejorar tu salud con un plan adaptado a ti.</p>
+            <a href="profile.html" class="btn btn-warning btn-lg">Ir al Perfil de Registro</a>
+            <button class="scroll-btn" id="scroll-down">↓</button>
         </div>
     </section>
 
-    <!-- BENEFITS SECTION -->
     <section id="benefits" class="text-center">
         <div class="container">
             <h2>Lo que te brindamos en HealthFit</h2>
+            <p>¡Descubre cómo mejorar tu salud y bienestar con nosotros!</p>
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
+                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" class="card-img-left" alt="Planes Personalizados">
                         <div class="card-body">
                             <h4 class="card-title">Planes Personalizados</h4>
                             <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
@@ -191,7 +173,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
+                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" class="card-img-left" alt="Monitoreo en Tiempo Real">
                         <div class="card-body">
                             <h4 class="card-title">Monitoreo en Tiempo Real</h4>
                             <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
@@ -200,7 +182,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
+                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1728086400&semt=ais_hybrid" class="card-img-left" alt="Asesoría Profesional">
                         <div class="card-body">
                             <h4 class="card-title">Asesoría Profesional</h4>
                             <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
@@ -211,13 +193,12 @@
         </div>
     </section>
 
-    <!-- EXERCISES SECTION -->
-    <section id="exercises" class="text-center">
+    <section id="exercises" class="text-center mt-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" class="card-img-left" alt="Ejercicios Básicos">
                         <div class="card-body">
                             <h4 class="card-title">Ejercicios Básicos</h4>
                             <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
@@ -225,9 +206,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card mt-4">
-                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
+                <div class="col-md-6 mt-4">
+                    <div class="card">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" class="card-img-left" alt="Información Científica">
                         <div class="card-body">
                             <h4 class="card-title">Información Científica</h4>
                             <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
@@ -239,21 +220,9 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Cambiar la imagen de fondo en función de la posición del ratón
-        document.addEventListener('mousemove', function(e) {
-            const heroSection = document.getElementById('hero-section');
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            heroSection.style.backgroundPosition = `${x}% ${y}%`;
-        });
-
-        // Transición de imágenes de fondo
+        // Array de imágenes de fondo para el hero-section
         const heroImages = [
             'https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png',
             'https://png.pngtree.com/background/20230425/original/pngtree-male-athlete-running-on-a-running-track-picture-image_2469765.jpg',
@@ -273,17 +242,26 @@
         changeHeroBackground(); // Llama a la función al cargar la página
 
         // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrollPosition = window.scrollY || window.pageYOffset;
             const benefitsTop = document.getElementById('benefits').offsetTop;
 
             if (scrollPosition >= benefitsTop - 50) {
-                document.body.classList.add('white-background');
+                document.body.style.backgroundColor = 'white';
+                document.body.style.color = 'black';
             } else {
-                document.body.classList.remove('white-background');
+                document.body.style.backgroundColor = 'transparent';
+                document.body.style.color = 'white';
             }
+        });
+
+        // Desplazar hacia abajo al hacer clic en el botón "↓"
+        document.getElementById('scroll-down').addEventListener('click', function () {
+            const section = document.getElementById('benefits');
+            section.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
 
 </html>
+
