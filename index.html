@@ -4,130 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planificador de Dieta y Ejercicio</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>HealthFit - Planificador de Dieta y Ejercicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Arial', sans-serif;
-            color: white; /* Color del texto */
-            transition: background-color 0.5s; /* Transición suave al cambiar el fondo */
-            overflow-x: hidden; /* Evitar desplazamiento horizontal */
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.85); /* Fondo del header con opacidad */
-            padding: 20px; /* Relleno del header */
-            position: fixed; /* Fijo al inicio */
+            background-color: #000;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
-            transition: background-color 0.5s; /* Transición suave */
         }
 
         header .navbar-brand {
-            color: #ff9800; /* Color del texto del encabezado */
-            font-weight: bold; /* Hacer el texto más grueso */
-            font-size: 1.8rem; /* Tamaño de fuente */
-            text-transform: uppercase; /* Transformar a mayúsculas */
+            color: #ff9800;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
-        header .navbar-nav .nav-link {
-            color: #ffffff; /* Color del texto de las opciones de navegación */
-            margin-left: 15px; /* Espacio entre las opciones */
-            font-weight: 500; /* Grosor de letra */
-            transition: color 0.3s; /* Suave transición de color */
+        header .nav-link {
+            color: #fff;
+            margin-left: 15px;
         }
 
-        header .navbar-nav .nav-link:hover {
-            color: #ff9800; /* Cambiar color al pasar el mouse */
-        }
-
+        /* Hero Section */
         #hero-section {
-            height: 100vh; /* Ocupa toda la altura de la ventana */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            background-image: url('https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png');
             background-size: cover;
             background-position: center;
-            position: relative; /* Para el botón flotante */
-            transition: background-image 1s ease-in-out; /* Transición para el fondo */
+            color: #fff;
+            text-align: center;
+            position: relative;
+            transition: background-image 1s ease-in-out;
         }
 
-        #hero-section h1,
+        #hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
         #hero-section p {
-            opacity: 1;
-            transition: opacity 1s ease-in-out; /* Transición para el texto */
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
         }
 
-        #benefits,
-        #exercises {
-            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
-            padding: 30px 0; /* Relleno reducido */
-            color: black;
-            margin: 0; /* Eliminar márgenes */
+        .btn-hero {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            border: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-hero:hover {
+            background-color: #e68a00;
+        }
+
+        /* Benefits Section */
+        section {
+            padding: 60px 0;
+        }
+
+        #benefits {
+            background-color: #fff;
+            text-align: center;
+            color: #000;
         }
 
         #benefits h2 {
-            color: #ff9800; /* Cambiar el color del texto a un color más visible */
+            color: #ff9800;
+            margin-bottom: 40px;
         }
 
         .card {
-            transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para tarjetas */
-            margin: 10px; /* Reducción del espaciado entre tarjetas */
-            border: none; /* Sin borde */
-            border-radius: 15px; /* Bordes redondeados */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px); /* Efecto de elevación al pasar el mouse */
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
         }
 
-        /* Efecto de transición para las imágenes */
-        .card-img-left {
-            max-width: 100%; /* Ajusta el tamaño de la imagen */
-            height: 200px; /* Altura fija para uniformidad */
-            object-fit: cover; /* Mantener proporciones */
-            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
-            border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
-            transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
+        .card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
         }
 
-        .card-img-left:hover {
-            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-            opacity: 0.8; /* Cambia la opacidad al pasar el mouse */
+        /* Exercises Section */
+        #exercises {
+            text-align: center;
         }
 
-        /* Estilos del botón de desplazamiento */
-        .scroll-btn {
-            position: absolute;
-            bottom: 50px; /* Aumentar espacio al fondo */
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            background-color: transparent;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
-        .scroll-btn:hover {
-            color: #ffc107; /* Color del botón al pasar el mouse */
+        /* Transiciones suaves */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container img.active {
+            opacity: 1;
+        }
+
+        /* Dinámica de desplazamiento */
+        .white-background {
+            background-color: white;
+            color: black;
         }
     </style>
 </head>
 
 <body>
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <!-- HEADER -->
+    <header>
         <div class="container">
-            <a class="navbar-brand text-uppercase" href="index.html">HealthFit</a>
+            <a class="navbar-brand" href="index.html">HealthFit</a>
             <nav>
-                <ul class="navbar-nav">
+                <ul class="nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta</a></li>
                     <li class="nav-item"><a class="nav-link" href="tracking.html">Monitoreo</a></li>
@@ -139,23 +163,23 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section id="hero-section">
         <div>
-            <h1 class="display-4">¡Bienvenido a HealthFit!</h1>
-            <p class="lead">Comienza a mejorar tu salud con un plan adaptado a ti.</p>
-            <a href="profile.html" class="btn btn-warning btn-lg">Ir al Perfil de Registro</a>
-            <button class="scroll-btn" id="scroll-down">↓</button>
+            <h1>¡Bienvenido a HealthFit!</h1>
+            <p>Comienza a mejorar tu salud con un plan adaptado a ti.</p>
+            <a href="profile.html" class="btn btn-hero">Ir al Perfil de Registro</a>
         </div>
     </section>
 
+    <!-- BENEFITS SECTION -->
     <section id="benefits" class="text-center">
         <div class="container">
             <h2>Lo que te brindamos en HealthFit</h2>
-            <p>¡Descubre cómo mejorar tu salud y bienestar con nosotros!</p>
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" class="card-img-left" alt="Planes Personalizados">
+                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
                         <div class="card-body">
                             <h4 class="card-title">Planes Personalizados</h4>
                             <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
@@ -164,7 +188,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" class="card-img-left" alt="Monitoreo en Tiempo Real">
+                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
                         <div class="card-body">
                             <h4 class="card-title">Monitoreo en Tiempo Real</h4>
                             <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
@@ -173,7 +197,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1728086400&semt=ais_hybrid" class="card-img-left" alt="Asesoría Profesional">
+                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
                         <div class="card-body">
                             <h4 class="card-title">Asesoría Profesional</h4>
                             <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
@@ -184,12 +208,13 @@
         </div>
     </section>
 
-    <section id="exercises" class="text-center mt-5">
+    <!-- EXERCISES SECTION -->
+    <section id="exercises" class="text-center">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" class="card-img-left" alt="Ejercicios Básicos">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
                         <div class="card-body">
                             <h4 class="card-title">Ejercicios Básicos</h4>
                             <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
@@ -197,9 +222,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4">
-                    <div class="card">
-                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" class="card-img-left" alt="Información Científica">
+                <div class="col-md-6">
+                    <div class="card mt-4">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
                         <div class="card-body">
                             <h4 class="card-title">Información Científica</h4>
                             <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
@@ -233,23 +258,15 @@
         changeHeroBackground(); // Llama a la función al cargar la página
 
         // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const scrollPosition = window.scrollY || window.pageYOffset;
             const benefitsTop = document.getElementById('benefits').offsetTop;
 
             if (scrollPosition >= benefitsTop - 50) {
-                document.body.style.backgroundColor = 'white';
-                document.body.style.color = 'black';
+                document.body.classList.add('white-background');
             } else {
-                document.body.style.backgroundColor = 'transparent';
-                document.body.style.color = 'white';
+                document.body.classList.remove('white-background');
             }
-        });
-
-        // Desplazar hacia abajo al hacer clic en el botón "↓"
-        document.getElementById('scroll-down').addEventListener('click', function () {
-            const section = document.getElementById('benefits');
-            section.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
