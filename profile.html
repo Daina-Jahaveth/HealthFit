@@ -47,7 +47,7 @@
 
         /* Centralize Form */
         .container {
-            margin-top: 100px;
+            margin-top: 80px; /* Ajustar el margen superior para evitar que el contenido se superponga al encabezado */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -229,18 +229,14 @@
             const img = document.getElementById('profile-pic');
             const file = event.target.files[0];
             const reader = new FileReader();
-
-            reader.onload = function (e) {
-                img.src = e.target.result;
-                localStorage.setItem('profilePic', e.target.result); // Guardar en localStorage
+            reader.onload = function () {
+                img.src = reader.result;
+                localStorage.setItem('profilePic', reader.result);
             }
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+            reader.readAsDataURL(file);
         }
 
-        // Flatpickr configuración
+        // Inicializar Flatpickr
         flatpickr("#birthdate", {
             dateFormat: "Y-m-d",
         });
@@ -251,6 +247,12 @@
             if (savedPic) {
                 document.getElementById('profile-pic').src = savedPic;
             }
+        }
+    </script>
+</body>
+
+</html>
+
         }
     </script>
 </body>
