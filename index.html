@@ -15,7 +15,7 @@
 
         header {
             background-color: #000;
-            padding: 10px 20px; /* Reducir el padding para hacer el header más delgado */
+            padding: 10px 20px; /* Header más delgado */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
@@ -92,7 +92,7 @@
         }
 
         .card {
-            margin: 20px 0;
+            margin: 20px; /* Espacio entre tarjetas */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -109,11 +109,18 @@
             border-top-right-radius: 15px;
         }
 
-        /* Exercises Section */
-        #exercises {
-            text-align: center;
+        /* Te Puede Interesar Section */
+        #te-puede-interesar {
+            background-color: #f8f9fa;
+            padding: 60px 0;
         }
 
+        #te-puede-interesar .interests-title {
+            color: #ff9800;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
         footer {
             background-color: #000;
             color: #fff;
@@ -121,23 +128,21 @@
             text-align: center;
         }
 
-        /* Additional Styling */
-        .interests-title {
-            margin: 40px 0;
-            font-size: 2rem;
-            color: #ff9800;
+        /* Animaciones para las imágenes */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
-        /* Styling for the healthy recipes card */
-        .recipes-card {
-            margin: 20px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .image-container img.active {
+            opacity: 1;
         }
 
-        .recipes-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+        /* Estilos para el carrusel */
+        .carousel {
+            margin-bottom: 20px; /* Espacio inferior para el carrusel */
         }
     </style>
 </head>
@@ -206,14 +211,24 @@
         </div>
     </section>
 
-    <!-- Título de "Te Puede Interesar" -->
-            <h2 class="interests-title">Te Puede Interesar</h2>
-    <section id="exercises" class="text-center">
+    <!-- TE PUEDE INTERESAR SECTION -->
+    <section id="te-puede-interesar" class="text-center">
         <div class="container">
+            <h2 class="interests-title">Te Puede Interesar</h2>
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card">
-                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <img src="https://img.freepik.com/foto-gratis/sopa-vegetales_23-2147719243.jpg" alt="Recetas Saludables">
+                        <div class="card-body">
+                            <h4 class="card-title">Recetas Saludables</h4>
+                            <p class="card-text">Explora deliciosas y saludables recetas que complementan tu dieta.</p>
+                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/foto-gratis/ejercicio-grupo-gente-sala_23-2147719281.jpg" alt="Ejercicios Básicos">
                         <div class="card-body">
                             <h4 class="card-title">Ejercicios Básicos</h4>
                             <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
@@ -221,27 +236,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card mt-4">
+                <div class="col-md-4">
+                    <div class="card">
                         <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
                         <div class="card-body">
                             <h4 class="card-title">Información Científica</h4>
-                            <p class="card-text">
-
                             <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
                             <a href="informacion.html" class="btn btn-warning">Más Información</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card recipes-card">
-                        <img src="https://img.freepik.com/foto-gratis/sopa-vegetales_23-2147719243.jpg" alt="Recetas Saludables">
-                        <div class="card-body">
-                            <h4 class="card-title">Recetas Saludables</h4>
-                            <p class="card-text">Explora deliciosas y saludables recetas que complementan tu dieta.</p>
-                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
                         </div>
                     </div>
                 </div>
