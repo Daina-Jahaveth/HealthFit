@@ -140,20 +140,25 @@
         }
 
         .interest-card {
+            margin: 20px; /* Espacio entre tarjetas */
             border-radius: 15px;
             background-color: #ffffff; /* Fondo blanco */
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin: 10px; /* Espacio entre tarjetas */
-            overflow: hidden;
+            display: flex; /* Flexbox para la tarjeta */
+            flex-direction: column; /* Coloca contenido en columna */
+            height: 100%; /* Para asegurar que ocupen la misma altura */
+            opacity: 0; /* Inicialmente invisibles */
+            transform: translateY(20px); /* Inicialmente desplazadas hacia abajo */
+            position: relative; /* Para el efecto de desplazamiento */
         }
 
         .interest-card img {
-            height: 120px; /* Altura de la imagen */
+            height: 150px; /* Altura de la imagen */
             object-fit: cover; /* Mantener proporciones */
             border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
             border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
-            transition: transform 0.3s ease; /* Transición para el zoom */
+            transition: transform 0.3s; /* Transición para el zoom */
         }
 
         .interest-card img:hover {
@@ -164,6 +169,33 @@
             padding: 15px; /* Espacio interno */
         }
 
+        /* Flechas de navegación */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 152, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background-color: rgba(255, 152, 0, 1);
+        }
+
+        .nav-arrow.left {
+            left: 10px;
+        }
+
+        .nav-arrow.right {
+            right: 10px;
+        }
+
         /* Footer */
         footer {
             background-color: #000;
@@ -172,6 +204,24 @@
             text-align: center;
             transition: transform 0.3s ease;
             position: relative; /* Permite que el footer se desplace al hacer scroll */
+        }
+
+        /* Animación para tarjetas */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo adicional para animaciones de tarjetas */
+        .interest-card {
+            animation: fadeIn 0.5s forwards; /* Aplica la animación */
         }
     </style>
 </head>
@@ -191,6 +241,8 @@
                     <li class="nav-item"><a class="nav-link" href="care.html">Cuidado Médico</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html">Mi Perfil</a></li>
                 </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- HERO SECTION -->
@@ -273,33 +325,34 @@
                         </div>
                     </div>
                 </div>
+                <!-- Nuevos temas de interés -->
                 <div class="col-md-4">
                     <div class="interest-card">
-                        <img src="https://www.health.harvard.edu/media/content/images/0-080810-033-hbs-motivation.jpg" alt="Motivación">
+                        <img src="https://www.abc.es/Media/202002/24/fitness_14e20f1a.jpg" alt="Aspectos Psicológicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Aspectos Psicológicos</h4>
+                            <p class="card-text">Cómo mantener la motivación en tu viaje de fitness.</p>
+                            <a href="aspectos-psicologicos.html" class="btn btn-warning">Leer Más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://www.trainingpeaks.com/wp-content/uploads/2021/09/How-to-Stay-Motivated-to-Train-Featured.jpg" alt="Motivación">
                         <div class="card-body">
                             <h4 class="card-title">Motivación</h4>
-                            <p class="card-text">Encuentra las claves para mantenerte motivado en tu camino hacia la salud.</p>
+                            <p class="card-text">Técnicas para mantener la motivación en tus entrenamientos.</p>
                             <a href="motivacion.html" class="btn btn-warning">Leer Más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="interest-card">
-                        <img src="https://cdn.shopify.com/s/files/1/0146/0324/0436/files/blog_mindset.jpg?v=1570168894" alt="Aspectos Psicológicos">
+                        <img src="https://cdn.shopify.com/s/files/1/0045/5543/0540/articles/your-guide-to-fitness-nutrition_1200x630.jpg?v=1605201861" alt="Nutrición Fitness">
                         <div class="card-body">
-                            <h4 class="card-title">Aspectos Psicológicos</h4>
-                            <p class="card-text">Explora cómo la mentalidad afecta tu progreso en el fitness.</p>
-                            <a href="psicologia.html" class="btn btn-warning">Leer Más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="interest-card">
-                        <img src="https://cdn.cdnparenting.com/articles/2019/06/06042307/motivational-quotes-for-workout.jpg" alt="Frases Motivacionales">
-                        <div class="card-body">
-                            <h4 class="card-title">Frases Motivacionales</h4>
-                            <p class="card-text">Inspírate con estas frases motivacionales para tu rutina.</p>
-                            <a href="frases.html" class="btn btn-warning">Leer Más</a>
+                            <h4 class="card-title">Nutrición Fitness</h4>
+                            <p class="card-text">Consejos sobre cómo nutrir tu cuerpo de manera efectiva.</p>
+                            <a href="nutricion-fitness.html" class="btn btn-warning">Leer Más</a>
                         </div>
                     </div>
                 </div>
@@ -362,4 +415,3 @@
 </body>
 
 </html>
-
