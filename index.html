@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planificador de Dieta y Ejercicio</title>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body {
       color: white;
@@ -182,43 +182,22 @@
     </div>
   </section>
 
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="bg-dark text-white text-center p-3">
+    <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Array de imágenes de fondo para el hero-section
-    const heroImages = [
-      'https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png',
-      'https://png.pngtree.com/background/20230425/original/pngtree-male-athlete-running-on-a-running-track-picture-image_2469765.jpg',
-      'https://media.gq.com.mx/photos/5e4ebbde2ac66b000952c868/4:3/w_1883,h_1412,c_limit/GettyImages-590575189.jpg',
-      'https://www.hola.com/horizon/landscape/ad1cf35c7342-balon-medicinal-2t-t.jpg'
-    ];
+    document.getElementById("scroll-down").onclick = function () {
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    };
 
-    let currentHeroIndex = 0;
-
-    function changeHeroBackground() {
-      document.getElementById('hero-section').style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
-      currentHeroIndex = (currentHeroIndex + 1) % heroImages.length; // Cambia al siguiente índice
-    }
-
-    // Cambia de imagen cada 5 segundos
-    setInterval(changeHeroBackground, 5000);
-    changeHeroBackground(); // Llama a la función al cargar la página
-
-    // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.scrollY || window.pageYOffset;
-      const benefitsTop = document.getElementById('benefits').offsetTop;
-
-      if (scrollPosition >= benefitsTop - 50) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 0) {
         document.body.classList.add('white-background');
       } else {
         document.body.classList.remove('white-background');
       }
-    });
-
-    // Desplazar hacia abajo al hacer clic en el botón "↓"
-    document.getElementById('scroll-down').addEventListener('click', function() {
-      const section = document.getElementById('benefits');
-      section.scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 </body>
