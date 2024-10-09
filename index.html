@@ -21,6 +21,11 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            transition: background-color 0.3s; /* Añadido para una transición suave */
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8); /* Cambia el color de fondo al hacer scroll */
         }
 
         header .navbar-brand {
@@ -32,6 +37,11 @@
         header .nav-link {
             color: #fff;
             margin-left: 15px;
+            transition: color 0.3s; /* Transición suave para el color del texto */
+        }
+
+        header .nav-link:hover {
+            color: #ff9800; /* Color al pasar el mouse */
         }
 
         /* Hero Section */
@@ -47,6 +57,7 @@
             text-align: center;
             position: relative;
             transition: background-image 1s ease-in-out;
+            overflow: hidden; /* Asegúrate de ocultar el desbordamiento */
         }
 
         #hero-section h1 {
@@ -119,6 +130,7 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
 
         /* Transiciones suaves */
@@ -227,9 +239,21 @@
         </div>
     </section>
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <footer>
+        <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Array de imágenes de fondo para el hero-section
+        // Cambiar la imagen de fondo en función de la posición del ratón
+        document.addEventListener('mousemove', function(e) {
+            const heroSection = document.getElementById('hero-section');
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            heroSection.style.backgroundPosition = `${x}% ${y}%`;
+        });
+
+        // Transición de imágenes de fondo
         const heroImages = [
             'https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png',
             'https://png.pngtree.com/background/20230425/original/pngtree-male-athlete-running-on-a-running-track-picture-image_2469765.jpg',
