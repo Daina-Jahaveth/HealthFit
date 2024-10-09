@@ -164,6 +164,23 @@
             padding: 20px;
             text-align: center;
         }
+
+        /* Animación para tarjetas */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .interest-card {
+            animation: fadeIn 0.5s forwards; /* Aplica la animación */
+        }
+
     </style>
 </head>
 
@@ -325,3 +342,4 @@
 </body>
 
 </html>
+
