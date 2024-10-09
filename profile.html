@@ -226,21 +226,31 @@
     <script>
         // Initialize date picker
         flatpickr("#birthdate", {
-            altInput: true,
-            altFormat: "F j, Y",
-            dateFormat: "Y-m-d",
+            dateFormat: "Y-m-d"
         });
 
-        // Load selected profile picture
-        function loadImage(event) {
-            var output = document.getElementById('profile-pic');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function () {
-                URL.revokeObjectURL(output.src) // free memory
-            }
-        }
+        // Profile picture preview
+        const loadImage = event => {
+            const image = document.getElementById('profile-pic');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.onload = () => {
+                URL.revokeObjectURL(image.src);
+            };
+        };
+
+        // Form submission and redirection
+        document.getElementById('profile-form').addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent default form submission behavior
+
+            // Simulate profile update logic (could be an AJAX request)
+            alert('Perfil actualizado con éxito.');
+
+            // Redirect to the survey page
+            window.location.href = 'survey.html';
+        });
     </script>
 
 </body>
 
 </html>
+
