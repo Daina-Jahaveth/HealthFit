@@ -131,6 +131,20 @@
             background-color: #ffffff; /* Fondo blanco */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            display: flex; /* Flexbox para la tarjeta */
+            flex-direction: column; /* Coloca contenido en columna */
+            height: 100%; /* Para asegurar que ocupen la misma altura */
+        }
+
+        .interest-card img {
+            height: 200px; /* Altura de la imagen */
+            object-fit: cover; /* Mantener proporciones */
+            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
+            border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
+        }
+
+        .interest-card .card-body {
+            padding: 15px; /* Espacio interno */
         }
 
         .interest-card:hover {
@@ -144,18 +158,6 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-        }
-
-        /* Transiciones suaves */
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .image-container img.active {
-            opacity: 1;
         }
     </style>
 </head>
