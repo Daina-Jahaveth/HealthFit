@@ -144,10 +144,12 @@
             background-color: #ffffff; /* Fondo blanco */
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 10px; /* Espacio entre tarjetas */
+            overflow: hidden;
         }
 
         .interest-card img {
-            height: 150px; /* Altura de la imagen */
+            height: 120px; /* Altura de la imagen */
             object-fit: cover; /* Mantener proporciones */
             border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
             border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
@@ -242,85 +244,67 @@
     <section id="te-puede-interesar" class="text-center">
         <div class="container">
             <h2 class="interests-title">Te Puede Interesar</h2>
-            <div id="interestCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Ejercicios Básicos</h4>
-                                        <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
-                                        <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Información Científica</h4>
-                                        <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
-                                        <a href="informacion.html" class="btn btn-warning">Más Información</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Recetas Saludables</h4>
-                                        <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
-                                        <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://www.health.harvard.edu/media/content/images/0-080810-033-hbs-motivation.jpg" alt="Motivación">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Motivación</h4>
-                                        <p class="card-text">Encuentra las claves para mantenerte motivado en tu camino hacia la salud.</p>
-                                        <a href="motivacion.html" class="btn btn-warning">Leer Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://cdn.shopify.com/s/files/1/0146/0324/0436/files/blog_mindset.jpg?v=1570168894" alt="Aspectos Psicológicos">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Aspectos Psicológicos</h4>
-                                        <p class="card-text">Explora cómo la mentalidad afecta tu progreso en el fitness.</p>
-                                        <a href="psicologia.html" class="btn btn-warning">Leer Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="interest-card">
-                                    <img src="https://cdn.cdnparenting.com/articles/2019/06/06042307/motivational-quotes-for-workout.jpg" alt="Frases Motivacionales">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Frases Motivacionales</h4>
-                                        <p class="card-text">Inspírate con estas frases motivacionales para tu rutina.</p>
-                                        <a href="frases.html" class="btn btn-warning">Leer Más</a>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Ejercicios Básicos</h4>
+                            <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
+                            <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#interestCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#interestCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
-                </button>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
+                        <div class="card-body">
+                            <h4 class="card-title">Información Científica</h4>
+                            <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
+                            <a href="informacion.html" class="btn btn-warning">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
+                        <div class="card-body">
+                            <h4 class="card-title">Recetas Saludables</h4>
+                            <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
+                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://www.health.harvard.edu/media/content/images/0-080810-033-hbs-motivation.jpg" alt="Motivación">
+                        <div class="card-body">
+                            <h4 class="card-title">Motivación</h4>
+                            <p class="card-text">Encuentra las claves para mantenerte motivado en tu camino hacia la salud.</p>
+                            <a href="motivacion.html" class="btn btn-warning">Leer Más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://cdn.shopify.com/s/files/1/0146/0324/0436/files/blog_mindset.jpg?v=1570168894" alt="Aspectos Psicológicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Aspectos Psicológicos</h4>
+                            <p class="card-text">Explora cómo la mentalidad afecta tu progreso en el fitness.</p>
+                            <a href="psicologia.html" class="btn btn-warning">Leer Más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="interest-card">
+                        <img src="https://cdn.cdnparenting.com/articles/2019/06/06042307/motivational-quotes-for-workout.jpg" alt="Frases Motivacionales">
+                        <div class="card-body">
+                            <h4 class="card-title">Frases Motivacionales</h4>
+                            <p class="card-text">Inspírate con estas frases motivacionales para tu rutina.</p>
+                            <a href="frases.html" class="btn btn-warning">Leer Más</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
