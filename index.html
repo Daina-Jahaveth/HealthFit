@@ -87,6 +87,75 @@
             background-color: #e68a00;
         }
 
+        /* Te Puede Interesar Section */
+        #te-puede-interesar {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+
+        #te-puede-interesar .interests-title {
+            color: #ff9800;
+            margin-bottom: 40px;
+        }
+
+        .interest-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .interest-list {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .interest-card {
+            border-radius: 15px;
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            width: 300px;
+        }
+
+        .interest-card img {
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .interest-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .interest-card .card-body {
+            padding: 15px;
+        }
+
+        /* Flechas de navegación */
+        .arrow {
+            cursor: pointer;
+            font-size: 2rem;
+            color: #ff9800;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
         /* Benefits Section */
         #benefits {
             padding: 60px 0;
@@ -124,70 +193,6 @@
             flex-direction: column;
             justify-content: center;
             padding: 15px;
-        }
-
-        /* Te Puede Interesar Section */
-        #te-puede-interesar {
-            padding: 60px 0;
-            background-color: #f8f9fa;
-            position: relative;
-        }
-
-        #te-puede-interesar .interests-title {
-            color: #ff9800;
-            margin-bottom: 40px;
-        }
-
-        .interest-container {
-            max-height: 400px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .interest-card {
-            border-radius: 15px;
-            background-color: #ffffff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            margin-bottom: 30px;
-        }
-
-        .interest-card img {
-            height: 150px;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .interest-card img:hover {
-            transform: scale(1.05);
-        }
-
-        .interest-card .card-body {
-            padding: 15px;
-        }
-
-        /* Flechas de navegación */
-        .arrow {
-            cursor: pointer;
-            font-size: 2rem;
-            color: #ff9800;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-        }
-
-        .arrow.up {
-            left: 10px;
-        }
-
-        .arrow.down {
-            right: 10px;
         }
 
         /* Footer */
@@ -228,48 +233,13 @@
         </div>
     </section>
 
-    <!-- BENEFITS SECTION -->
-    <section id="benefits" class="text-center">
-        <div class="container">
-            <h2>Lo que te brindamos en HealthFit</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="info-card">
-                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
-                        <div class="card-body">
-                            <h4 class="card-title">Planes Personalizados</h4>
-                            <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-card">
-                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
-                        <div class="card-body">
-                            <h4 class="card-title">Monitoreo en Tiempo Real</h4>
-                            <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info-card">
-                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
-                        <div class="card-body">
-                            <h4 class="card-title">Asesoría Profesional</h4>
-                            <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- TE PUEDE INTERESAR SECTION -->
     <section id="te-puede-interesar" class="text-center">
         <div class="container">
             <h2 class="interests-title">Te Puede Interesar</h2>
+            <span class="arrow left">&#9664;</span>
             <div class="interest-container">
-                <div id="interest-list">
+                <div class="interest-list">
                     <div class="interest-card">
                         <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
                         <div class="card-body">
@@ -311,8 +281,43 @@
                         </div>
                     </div>
                 </div>
-                <span class="arrow up">&#9650;</span>
-                <span class="arrow down">&#9660;</span>
+            </div>
+            <span class="arrow right">&#9654;</span>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="benefits" class="text-center">
+        <div class="container">
+            <h2>Lo que te brindamos en HealthFit</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
+                        <div class="card-body">
+                            <h4 class="card-title">Planes Personalizados</h4>
+                            <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
+                        <div class="card-body">
+                            <h4 class="card-title">Monitoreo en Tiempo Real</h4>
+                            <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
+                        <div class="card-body">
+                            <h4 class="card-title">Asesoría Profesional</h4>
+                            <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -342,24 +347,25 @@
         setInterval(changeHeroBackground, 5000);
         changeHeroBackground();
 
-        // Flechas de navegación vertical en la sección "Te Puede Interesar"
-        const interestList = document.getElementById('interest-list');
+        // Navegación horizontal en la sección "Te Puede Interesar"
+        const interestList = document.querySelector('.interest-list');
         let currentPosition = 0;
 
-        document.querySelector('.arrow.up').addEventListener('click', function () {
+        document.querySelector('.arrow.left').addEventListener('click', function () {
             if (currentPosition < 0) {
-                currentPosition += 250;
-                interestList.style.transform = `translateY(${currentPosition}px)`;
+                currentPosition += 320;
+                interestList.style.transform = `translateX(${currentPosition}px)`;
             }
         });
 
-        document.querySelector('.arrow.down').addEventListener('click', function () {
-            if (currentPosition > -750) {
-                currentPosition -= 250;
-                interestList.style.transform = `translateY(${currentPosition}px)`;
+        document.querySelector('.arrow.right').addEventListener('click', function () {
+            if (currentPosition > -960) {
+                currentPosition -= 320;
+                interestList.style.transform = `translateX(${currentPosition}px)`;
             }
         });
     </script>
 </body>
 
 </html>
+
