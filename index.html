@@ -12,7 +12,7 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
-            overflow-x: hidden; /* Evitar scroll horizontal */
+            overflow-x: hidden;
         }
 
         header {
@@ -23,7 +23,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: all 0.3s ease; /* Suaviza el cambio en el encabezado */
+            transition: all 0.3s ease;
         }
 
         header .navbar-brand {
@@ -31,18 +31,18 @@
             font-weight: bold;
             font-size: 1.5rem;
             text-align: center;
-            transition: opacity 0.3s; /* Suaviza la desaparición */
+            transition: opacity 0.3s;
         }
 
         header .nav {
             display: flex;
-            justify-content: flex-end; /* Alinear opciones a la derecha */
-            opacity: 1; /* Mostrar opciones por defecto */
-            transition: opacity 0.3s; /* Suaviza la desaparición */
+            justify-content: flex-end;
+            opacity: 1;
+            transition: opacity 0.3s;
         }
 
         header .nav-link {
-            color: white; /* Cambia el color del texto a blanco */
+            color: white;
             margin-left: 15px;
         }
 
@@ -138,48 +138,55 @@
             margin-bottom: 40px;
         }
 
+        .interest-container {
+            max-height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
         .interest-card {
             border-radius: 15px;
-            background-color: #ffffff; /* Fondo blanco */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones */
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            display: flex; /* Flexbox para la tarjeta */
-            flex-direction: column; /* Coloca contenido en columna */
-            height: 100%; /* Para asegurar que ocupen la misma altura */
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin-bottom: 30px;
         }
 
         .interest-card img {
-            height: 150px; /* Altura de la imagen */
-            object-fit: cover; /* Mantener proporciones */
-            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
-            border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
-            transition: transform 0.3s ease; /* Transición para el zoom */
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: transform 0.3s ease;
         }
 
         .interest-card img:hover {
-            transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+            transform: scale(1.05);
         }
 
         .interest-card .card-body {
-            padding: 15px; /* Espacio interno */
+            padding: 15px;
         }
 
         /* Flechas de navegación */
         .arrow {
             cursor: pointer;
             font-size: 2rem;
-            color: #ff9800; /* Color de las flechas */
+            color: #ff9800;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
         }
 
-        .arrow.left {
+        .arrow.up {
             left: 10px;
         }
 
-        .arrow.right {
+        .arrow.down {
             right: 10px;
         }
 
@@ -261,89 +268,51 @@
     <section id="te-puede-interesar" class="text-center">
         <div class="container">
             <h2 class="interests-title">Te Puede Interesar</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="carousel slide" id="interestCarousel" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Ejercicios Básicos</h4>
-                                                <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
-                                                <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Información Científica</h4>
-                                                <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
-                                                <a href="informacion.html" class="btn btn-warning">Más Información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Recetas Saludables</h4>
-                                                <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
-                                                <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://example.com/aspectos-psicologicos.jpg" alt="Aspectos Psicológicos">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Aspectos Psicológicos</h4>
-                                                <p class="card-text">Conoce la importancia de la salud mental en tu rutina.</p>
-                                                <a href="psicologia.html" class="btn btn-warning">Más Información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://example.com/motivacion.jpg" alt="Motivación">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Motivación</h4>
-                                                <p class="card-text">Encuentra inspiración para mantenerte activo.</p>
-                                                <a href="motivacion.html" class="btn btn-warning">Más Información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="interest-card">
-                                            <img src="https://example.com/temas-fitness.jpg" alt="Temas Fitness">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Temas Fitness</h4>
-                                                <p class="card-text">Aprende sobre nutrición, entrenamientos y más.</p>
-                                                <a href="fitness.html" class="btn btn-warning">Más Información</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="interest-container">
+                <div id="interest-list">
+                    <div class="interest-card">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Ejercicios Básicos</h4>
+                            <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
+                            <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#interestCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#interestCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
+                        <div class="card-body">
+                            <h4 class="card-title">Información Científica</h4>
+                            <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
+                            <a href="informacion.html" class="btn btn-warning">Más Información</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
+                        <div class="card-body">
+                            <h4 class="card-title">Recetas Saludables</h4>
+                            <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
+                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://cdn.pixabay.com/photo/2016/12/01/06/30/runner-1870807_1280.jpg" alt="Aspectos Psicológicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Aspectos Psicológicos</h4>
+                            <p class="card-text">Motivación y bienestar emocional para alcanzar tus metas fitness.</p>
+                            <a href="psicologia.html" class="btn btn-warning">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/18/12/05/weights-1839081_1280.jpg" alt="Temas Fitness">
+                        <div class="card-body">
+                            <h4 class="card-title">Temas Fitness</h4>
+                            <p class="card-text">Consejos prácticos sobre entrenamientos y vida fitness.</p>
+                            <a href="fitness.html" class="btn btn-warning">Ver Más</a>
+                        </div>
                     </div>
                 </div>
+                <span class="arrow up">&#9650;</span>
+                <span class="arrow down">&#9660;</span>
             </div>
         </div>
     </section>
@@ -367,36 +336,27 @@
 
         function changeHeroBackground() {
             document.getElementById('hero-section').style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
-            currentHeroIndex = (currentHeroIndex + 1) % heroImages.length; // Cambia al siguiente índice
+            currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
         }
 
-        // Cambia de imagen cada 5 segundos
         setInterval(changeHeroBackground, 5000);
-        changeHeroBackground(); // Llama a la función al cargar la página
+        changeHeroBackground();
 
-        // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-        window.addEventListener('scroll', function () {
-            const scrollPosition = window.scrollY || window.pageYOffset;
-            const benefitsTop = document.getElementById('benefits').offsetTop;
+        // Flechas de navegación vertical en la sección "Te Puede Interesar"
+        const interestList = document.getElementById('interest-list');
+        let currentPosition = 0;
 
-            if (scrollPosition >= benefitsTop - 50) {
-                document.body.classList.add('white-background');
-            } else {
-                document.body.classList.remove('white-background');
+        document.querySelector('.arrow.up').addEventListener('click', function () {
+            if (currentPosition < 0) {
+                currentPosition += 250;
+                interestList.style.transform = `translateY(${currentPosition}px)`;
             }
+        });
 
-            // Comportamiento del encabezado
-            const header = document.querySelector('header');
-            const navbarBrand = header.querySelector('.navbar-brand');
-
-            if (scrollPosition > 50) {
-                header.style.height = '50px'; // Reduce la altura
-                navbarBrand.style.opacity = '0'; // Oculta el texto
-                header.querySelector('.nav').style.opacity = '0'; // Oculta las opciones
-            } else {
-                header.style.height = '80px'; // Altura normal
-                navbarBrand.style.opacity = '1'; // Muestra el texto
-                header.querySelector('.nav').style.opacity = '1'; // Muestra las opciones
+        document.querySelector('.arrow.down').addEventListener('click', function () {
+            if (currentPosition > -750) {
+                currentPosition -= 250;
+                interestList.style.transform = `translateY(${currentPosition}px)`;
             }
         });
     </script>
