@@ -108,7 +108,6 @@
             cursor: pointer;
             transition: box-shadow 0.3s ease;
             display: block;
-            position: relative;
             background-color: #eaeaea;
         }
 
@@ -193,15 +192,15 @@
                 <div class="mb-3">
                     <label class="form-label">Género</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="male" value="Hombre">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Hombre" required>
                         <label class="form-check-label" for="male">Hombre</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="Mujer">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Mujer" required>
                         <label class="form-check-label" for="female">Mujer</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="other" value="Otro">
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="Otro" required>
                         <label class="form-check-label" for="other">Otro</label>
                     </div>
                 </div>
@@ -241,53 +240,18 @@
             }
         }
 
-        // Flatpickr configuración para la fecha de nacimiento
+        // Flatpickr configuración
         flatpickr("#birthdate", {
             dateFormat: "Y-m-d",
-            maxDate: "today",
-            locale: {
-                firstDayOfWeek: 1
-            }
         });
 
-        // Guardar datos en localStorage
-        document.getElementById('profile-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const birthdate = document.getElementById('birthdate').value;
-            const reminder = document.getElementById('reminder').checked;
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-
-            const userData = { firstName, lastName, birthdate, gender, reminder };
-            localStorage.setItem('userData', JSON.stringify(userData));
-
-            alert('Perfil actualizado correctamente');
-            window.location.href = 'survey.html'; // Redirigir a la página de encuesta
-        });
-
-        // Cargar imagen y datos al cargar la página
+        // Cargar imagen del localStorage al cargar la página
         window.onload = function () {
-            const savedProfilePic = localStorage.getItem('profilePic');
-            if (savedProfilePic) {
-                document.getElementById('profile-pic').src = savedProfilePic;
-            }
-
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            if (userData) {
-                document.getElementById('first-name').value = userData.firstName;
-                document.getElementById('last-name').value = userData.lastName;
-                document.getElementById('birthdate').value = userData.birthdate;
-                document.getElementById(userData.gender.toLowerCase()).checked = true;
-                document.getElementById('reminder').checked = userData.reminder;
+            const savedPic = localStorage.getItem('profilePic');
+            if (savedPic) {
+                document.getElementById('profile-pic').src = savedPic;
             }
         }
-    </script>
-</body>
-
-</html>
-
     </script>
 </body>
 
