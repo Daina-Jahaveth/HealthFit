@@ -88,7 +88,7 @@
             color: #000;
             border-radius: 10px; /* Bordes redondeados */
             padding: 30px; /* Espacio interno */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-top: 30px; /* Espacio superior */
         }
 
         #benefits h2 {
@@ -97,29 +97,32 @@
         }
 
         .info-card {
-            margin: 20px; /* Espacio entre tarjetas */
-            border: 1px solid #ddd; /* Borde gris claro */
+            display: flex; /* Hacer la tarjeta flexible */
+            margin: 20px 0; /* Espacio entre tarjetas */
             border-radius: 15px; /* Bordes redondeados */
             background-color: #ffffff; /* Fondo blanco */
-            transition: box-shadow 0.3s ease;
-        }
-
-        .info-card:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra suave al pasar el mouse */
         }
 
         .info-card img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            flex: 1; /* Ocupa la mitad de la tarjeta */
+            height: 200px; /* Altura de la imagen */
+            object-fit: cover; /* Mantener proporciones */
+            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
+            border-bottom-left-radius: 15px; /* Bordes redondeados para la imagen */
+        }
+
+        .info-card .card-body {
+            flex: 1; /* Ocupa la otra mitad de la tarjeta */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrar el contenido verticalmente */
+            padding: 15px; /* Espacio interno */
         }
 
         /* Te Puede Interesar Section */
         #te-puede-interesar {
             background-color: #f8f9fa;
             padding: 60px 0;
-            margin-top: 30px; /* Espacio superior */
         }
 
         #te-puede-interesar .interests-title {
@@ -193,7 +196,7 @@
         <div class="container">
             <h2>Lo que te brindamos en HealthFit</h2>
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="info-card">
                         <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
                         <div class="card-body">
@@ -202,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="info-card">
                         <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
                         <div class="card-body">
@@ -211,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="info-card">
                         <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
                         <div class="card-body">
@@ -285,7 +288,7 @@
         changeHeroBackground(); // Llama a la función al cargar la página
 
         // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrollPosition = window.scrollY || window.pageYOffset;
             const benefitsTop = document.getElementById('benefits').offsetTop;
 
@@ -299,4 +302,3 @@
 </body>
 
 </html>
-
