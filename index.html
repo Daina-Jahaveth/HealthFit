@@ -1,204 +1,216 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planificador de Dieta y Ejercicio</title>
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    body {
-      color: white;
-      margin: 0; /* Eliminar márgenes del body */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthFit - Planificador de Dieta y Ejercicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
 
-    #hero-section {
-      height: 100vh; /* Ocupa toda la altura de la ventana */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-size: cover;
-      background-position: center;
-      position: relative; /* Para el botón flotante */
-      transition: background-image 1s ease-in-out; /* Transición para el fondo */
-    }
+        header {
+            background-color: #000;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-    #hero-section h1, #hero-section p {
-      opacity: 1;
-      transition: opacity 1s ease-in-out; /* Transición para el texto */
-    }
+        header .navbar-brand {
+            color: #ff9800;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
 
-    body.white-background {
-      background-image: none;
-      background-color: white; /* Fondo blanco cuando se desplaza */
-      color: black;
-    }
+        header .nav-link {
+            color: #fff;
+            margin-left: 15px;
+        }
 
-    #benefits, #exercises {
-      background-color: white; /* Fondo blanco */
-      padding: 30px 0; /* Relleno reducido */
-      color: black;
-      margin: 0; /* Eliminar márgenes */
-    }
+        #hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
 
-    #benefits h2 {
-      color: #ff9800; /* Cambiar el color del texto a un color más visible */
-    }
+        #hero-section h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
 
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para tarjetas */
-      margin: 10px; /* Reducción del espaciado entre tarjetas */
-      border: none; /* Sin borde */
-      border-radius: 15px; /* Bordes redondeados */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
-    }
+        #hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
 
-    .card:hover {
-      transform: translateY(-10px); /* Efecto de elevación al pasar el mouse */
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
-    }
+        .btn-hero {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
 
-    /* Efecto de transición para las imágenes */
-    .card-img-left {
-      max-width: 100%; /* Ajusta el tamaño de la imagen */
-      height: 200px; /* Altura fija para uniformidad */
-      object-fit: cover; /* Mantener proporciones */
-      border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
-      border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
-      transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
-    }
+        .btn-hero:hover {
+            background-color: #e68a00;
+        }
 
-    .card-img-left:hover {
-      transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-      opacity: 0.8; /* Cambia la opacidad al pasar el mouse */
-    }
+        section {
+            padding: 60px 0;
+        }
 
-    /* Estilos del botón de desplazamiento */
-    .scroll-btn {
-      position: absolute;
-      bottom: 50px; /* Aumentar espacio al fondo */
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      background-color: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
+        #benefits {
+            background-color: #fff;
+            text-align: center;
+            color: #000;
+        }
 
-    .scroll-btn:hover {
-      color: #ffc107; /* Color del botón al pasar el mouse */
-    }
-  </style>
+        #benefits h2 {
+            color: #ff9800;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        #exercises .card {
+            transition: transform 0.3s ease;
+        }
+
+        #exercises .card:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-  <header class="navbar navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand text-uppercase" href="index.html">HealthFit</a>
-      <nav>
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link text-white" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="survey.html">Encuesta</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="tracking.html">Monitoreo</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="plan.html">Plan</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="care.html">Cuidado Médico</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="profile.html">Mi Perfil</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section id="hero-section">
-    <div>
-      <h1 class="display-4">¡Bienvenido a HealthFit!</h1>
-      <p class="lead">Comienza a mejorar tu salud con un plan adaptado a ti.</p>
-      <a href="profile.html" class="btn btn-warning btn-lg">Ir al Perfil de Registro</a> <!-- Este es el botón que redirige al perfil -->
-      <button class="scroll-btn" id="scroll-down">↓</button>
-    </div>
-  </section>
-
-  <section id="benefits" class="text-center">
-    <div class="container">
-      <h2>Lo que te brindamos en HealthFit</h2>
-      <p>¡Descubre cómo mejorar tu salud y bienestar con nosotros!</p>
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" class="card-img-left" alt="Planes Personalizados">
-            <div class="card-body">
-              <h4 class="card-title">Planes Personalizados</h4>
-              <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
-            </div>
-          </div>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <a class="navbar-brand" href="index.html">HealthFit</a>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tracking.html">Monitoreo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="plan.html">Plan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="care.html">Cuidado Médico</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Mi Perfil</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" class="card-img-left" alt="Monitoreo en Tiempo Real">
-            <div class="card-body">
-              <h4 class="card-title">Monitoreo en Tiempo Real</h4>
-              <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1728086400&semt=ais_hybrid" class="card-img-left" alt="Asesoría Profesional"> <!-- Asegúrate que esta URL sea correcta y accesible -->
-            <div class="card-body">
-              <h4 class="card-title">Asesoría Profesional</h4>
-              <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section id="exercises" class="text-center mt-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="card">
-            <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" class="card-img-left" alt="Ejercicios Básicos">
-            <div class="card-body">
-              <h4 class="card-title">Ejercicios Básicos</h4>
-              <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
-              <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
-            </div>
-          </div>
+    <!-- HERO SECTION -->
+    <section id="hero-section">
+        <div>
+            <h1>¡Bienvenido a HealthFit!</h1>
+            <p>Comienza a mejorar tu salud con un plan adaptado a ti.</p>
+            <a href="profile.html" class="btn btn-hero">Ir al Perfil de Registro</a>
         </div>
-        <div class="col-md-6 mt-4">
-          <div class="card">
-            <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" class="card-img-left" alt="Información Científica">
-            <div class="card-body">
-              <h4 class="card-title">Información Científica</h4>
-              <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
-              <a href="informacion.html" class="btn btn-warning">Más Información</a>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="benefits" class="text-center">
+        <div class="container">
+            <h2>Lo que te brindamos en HealthFit</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
+                        <div class="card-body">
+                            <h4 class="card-title">Planes Personalizados</h4>
+                            <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
+                        <div class="card-body">
+                            <h4 class="card-title">Monitoreo en Tiempo Real</h4>
+                            <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
+                        <div class="card-body">
+                            <h4 class="card-title">Asesoría Profesional</h4>
+                            <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="bg-dark text-white text-center p-3">
-    <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
-  </footer>
+    <!-- EXERCISES SECTION -->
+    <section id="exercises" class="text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Ejercicios Básicos</h4>
+                            <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
+                            <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mt-4">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
+                        <div class="card-body">
+                            <h4 class="card-title">Información Científica</h4>
+                            <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
+                            <a href="informacion.html" class="btn btn-warning">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById("scroll-down").onclick = function () {
-      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-    };
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
+    </footer>
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 0) {
-        document.body.classList.add('white-background');
-      } else {
-        document.body.classList.remove('white-background');
-      }
-    });
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
