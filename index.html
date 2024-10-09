@@ -11,28 +11,34 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4; /* Fondo suave para la página */
+            background-color: #f4f4f4;
+            overflow-x: hidden; /* Evitar scroll horizontal */
         }
 
         header {
             background-color: #000;
-            padding: 10px 20px; /* Header más delgado */
+            padding: 10px 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease; /* Suaviza el cambio en el encabezado */
         }
 
         header .navbar-brand {
             color: #ff9800;
             font-weight: bold;
             font-size: 1.5rem;
+            text-align: center;
+            transition: opacity 0.3s; /* Suaviza la desaparición */
         }
 
-        header .nav-link {
-            color: #fff;
-            margin-left: 15px;
+        header .nav {
+            display: flex;
+            justify-content: flex-end; /* Alinear opciones a la derecha */
+            opacity: 1; /* Mostrar opciones por defecto */
+            transition: opacity 0.3s; /* Suaviza la desaparición */
         }
 
         /* Hero Section */
@@ -81,8 +87,9 @@
             padding: 60px 0;
             background-color: #fff;
             color: #000;
-            border-radius: 10px; /* Bordes redondeados */
-            margin-top: 30px; /* Espacio superior */
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         #benefits h2 {
@@ -91,33 +98,34 @@
         }
 
         .info-card {
-            display: flex; /* Hacer la tarjeta flexible */
-            margin: 20px 0; /* Espacio entre tarjetas */
-            background-color: #ffffff; /* Fondo blanco */
-            border-radius: 15px; /* Bordes redondeados */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            display: flex;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: none;
+            border: none;
+            overflow: hidden;
         }
 
         .info-card img {
-            flex: 1; /* Ocupa la mitad de la tarjeta */
-            height: 200px; /* Altura de la imagen */
-            object-fit: cover; /* Mantener proporciones */
-            border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
-            border-bottom-left-radius: 15px; /* Bordes redondeados para la imagen */
+            flex: 1;
+            height: 200px;
+            object-fit: cover;
         }
 
         .info-card .card-body {
-            flex: 1; /* Ocupa la otra mitad de la tarjeta */
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrar el contenido verticalmente */
-            padding: 15px; /* Espacio interno */
+            justify-content: center;
+            padding: 15px;
         }
 
         /* Te Puede Interesar Section */
         #te-puede-interesar {
             padding: 60px 0;
             background-color: #f8f9fa;
+            overflow: hidden; /* Evitar scroll horizontal */
         }
 
         #te-puede-interesar .interests-title {
@@ -127,17 +135,19 @@
 
         .interest-card {
             margin: 20px; /* Espacio entre tarjetas */
-            border-radius: 15px; /* Bordes redondeados */
+            border-radius: 15px;
             background-color: #ffffff; /* Fondo blanco */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Animaciones */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             display: flex; /* Flexbox para la tarjeta */
             flex-direction: column; /* Coloca contenido en columna */
             height: 100%; /* Para asegurar que ocupen la misma altura */
+            opacity: 0; /* Inicialmente invisibles */
+            transform: translateY(20px); /* Inicialmente desplazadas hacia abajo */
         }
 
         .interest-card img {
-            height: 200px; /* Altura de la imagen */
+            height: 150px; /* Altura de la imagen */
             object-fit: cover; /* Mantener proporciones */
             border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
             border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
@@ -145,11 +155,6 @@
 
         .interest-card .card-body {
             padding: 15px; /* Espacio interno */
-        }
-
-        .interest-card:hover {
-            transform: scale(1.05); /* Efecto de elevación al pasar el mouse */
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
         }
 
         /* Footer */
@@ -300,6 +305,20 @@
                 document.body.classList.add('white-background');
             } else {
                 document.body.classList.remove('white-background');
+            }
+
+            // Comportamiento del encabezado
+            const header = document.querySelector('header');
+            const navbarBrand = header.querySelector('.navbar-brand');
+
+            if (scrollPosition > 50) {
+                header.style.height = '50px'; // Reduce la altura
+                navbarBrand.style.opacity = '0'; // Oculta el texto
+                header.querySelector('.nav').style.opacity = '0'; // Oculta las opciones
+            } else {
+                header.style.height = '80px'; // Altura normal
+                navbarBrand.style.opacity = '1'; // Muestra el texto
+                header.querySelector('.nav').style.opacity = '1'; // Muestra las opciones
             }
         });
     </script>
