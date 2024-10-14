@@ -1,225 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planificador de Dieta y Ejercicio</title>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <style>
-    body {
-      color: white;
-      margin: 0; /* Eliminar márgenes del body */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    #hero-section {
-      height: 100vh; /* Ocupa toda la altura de la ventana */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-size: cover;
-      background-position: center;
-      position: relative; /* Para el botón flotante */
-      transition: background-image 1s ease-in-out; /* Transición para el fondo */
-    }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
 
-    #hero-section h1, #hero-section p {
-      opacity: 1;
-      transition: opacity 1s ease-in-out; /* Transición para el texto */
-    }
+        .edit-icon {
+            position: absolute;
+            top: 120px;
+            left: 85px;
+            cursor: pointer;
+        }
 
-    body.white-background {
-      background-image: none;
-      background-color: white; /* Fondo blanco cuando se desplaza */
-      color: black;
-    }
+        /* Estilos del header */
+        header {
+            background-color: #000; /* Color negro */
+            padding: 10px 0;
+        }
 
-    #benefits, #exercises {
-      background-color: white; /* Fondo blanco */
-      padding: 30px 0; /* Relleno reducido */
-      color: black;
-      margin: 0; /* Eliminar márgenes */
-    }
-
-    #benefits h2 {
-      color: #ff9800; /* Cambiar el color del texto a un color más visible */
-    }
-
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para tarjetas */
-      margin: 10px; /* Reducción del espaciado entre tarjetas */
-      border: none; /* Sin borde */
-      border-radius: 15px; /* Bordes redondeados */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
-    }
-
-    .card:hover {
-      transform: translateY(-10px); /* Efecto de elevación al pasar el mouse */
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
-    }
-
-    /* Efecto de transición para las imágenes */
-    .card-img-left {
-      max-width: 100%; /* Ajusta el tamaño de la imagen */
-      height: 200px; /* Altura fija para uniformidad */
-      object-fit: cover; /* Mantener proporciones */
-      border-top-left-radius: 15px; /* Bordes redondeados para la imagen */
-      border-top-right-radius: 15px; /* Bordes redondeados para la imagen */
-      transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave */
-    }
-
-    .card-img-left:hover {
-      transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-      opacity: 0.8; /* Cambia la opacidad al pasar el mouse */
-    }
-
-    /* Estilos del botón de desplazamiento */
-    .scroll-btn {
-      position: absolute;
-      bottom: 50px; /* Aumentar espacio al fondo */
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      background-color: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .scroll-btn:hover {
-      color: #ffc107; /* Color del botón al pasar el mouse */
-    }
-  </style>
+        header a.navbar-brand, 
+        header .nav-link {
+            color: white !important; /* Texto blanco */
+        }
+    </style>
 </head>
+
 <body>
-  <header class="navbar navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand text-uppercase" href="index.html">HealthFit</a>
-      <nav>
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link text-white" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="survey.html">Encuesta</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="tracking.html">Monitoreo</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="plan.html">Plan</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="care.html">Cuidado Médico</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="profile.html">Mi Perfil</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section id="hero-section">
-    <div>
-      <h1 class="display-4">¡Bienvenido a HealthFit!</h1>
-      <p class="lead">Comienza a mejorar tu salud con un plan adaptado a ti.</p>
-      <a href="profile.html" class="btn btn-warning btn-lg">Ir al Perfil de Registro</a> <!-- Este es el botón que redirige al perfil -->
-      <button class="scroll-btn" id="scroll-down">↓</button>
-    </div>
-  </section>
-
-  <section id="benefits" class="text-center">
-    <div class="container">
-      <h2>Lo que te brindamos en HealthFit</h2>
-      <p>¡Descubre cómo mejorar tu salud y bienestar con nosotros!</p>
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" class="card-img-left" alt="Planes Personalizados">
-            <div class="card-body">
-              <h4 class="card-title">Planes Personalizados</h4>
-              <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
-            </div>
-          </div>
+    <!-- HEADER -->
+    <header>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">HealthFit</a>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tracking.html">Monitoreo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="plan.html">Plan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="care.html">Cuidado Médico</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Mi Perfil</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" class="card-img-left" alt="Monitoreo en Tiempo Real">
-            <div class="card-body">
-              <h4 class="card-title">Monitoreo en Tiempo Real</h4>
-              <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
+    </header>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <main class="container">
+        <div class="form-container text-center">
+            <h2>Mi Perfil</h2>
+
+            <!-- Profile Picture -->
+            <div style="position: relative;">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+                    alt="Foto de Perfil" class="profile-picture" id="profile-pic">
+                <svg class="edit-icon" onclick="document.getElementById('upload-image').click();" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" width="24" height="24" fill="#007bff">
+                    <path d="M3 17.25V21h3.75l11.7-11.7-3.75-3.75L3 17.25zm15.6-9.6c.39-.39.39-1.02 0-1.41l-1.5-1.5c-.39-.39-1.02-.39-1.41 0l-1.5 1.5 3.75 3.75 1.5-1.5z" />
+                </svg>
             </div>
-          </div>
+
+            <!-- Campo para subir imagen -->
+            <input type="file" id="upload-image" accept="image/*" onchange="loadImage(event)" style="display: none;">
+
+            <form id="profile-form">
+                <!-- Campos del formulario -->
+                <label for="first-name" class="form-label">Nombre</label>
+                <input type="text" class="form-control mb-3" id="first-name" placeholder="Nombre" required>
+
+                <label for="last-name" class="form-label">Apellido</label>
+                <input type="text" class="form-control mb-3" id="last-name" placeholder="Apellido" required>
+
+                <div class="mb-3">
+                    <label class="form-label">Género</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="Hombre" required>
+                        <label class="form-check-label" for="male">Hombre</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="Mujer" required>
+                        <label class="form-check-label" for="female">Mujer</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="Otro" required>
+                        <label class="form-check-label" for="other">Otro</label>
+                    </div>
+                </div>
+
+                <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
+                <input type="text" class="form-control mb-3" id="birthdate" placeholder="Selecciona tu fecha" required>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="reminder">
+                    <label class="form-check-label" for="reminder">Quiero ser recordado de realizar mi rutina diaria</label>
+                </div>
+
+                <button type="submit" class="btn btn-warning">Actualizar Perfil</button>
+            </form>
         </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1728086400&semt=ais_hybrid" class="card-img-left" alt="Asesoría Profesional"> <!-- Asegúrate que esta URL sea correcta y accesible -->
-            <div class="card-body">
-              <h4 class="card-title">Asesoría Profesional</h4>
-              <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </main>
 
-  <section id="exercises" class="text-center mt-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="card">
-            <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" class="card-img-left" alt="Ejercicios Básicos">
-            <div class="card-body">
-              <h4 class="card-title">Ejercicios Básicos</h4>
-              <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
-              <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 mt-4">
-          <div class="card">
-            <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" class="card-img-left" alt="Información Científica">
-            <div class="card-body">
-              <h4 class="card-title">Información Científica</h4>
-              <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
-              <a href="informacion.html" class="btn btn-warning">Más Información</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#birthdate", { dateFormat: "Y-m-d" });
 
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Array de imágenes de fondo para el hero-section
-    const heroImages = [
-      'https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png',
-      'https://png.pngtree.com/background/20230425/original/pngtree-male-athlete-running-on-a-running-track-picture-image_2469765.jpg',
-      'https://media.gq.com.mx/photos/5e4ebbde2ac66b000952c868/4:3/w_1883,h_1412,c_limit/GettyImages-590575189.jpg',
-      'https://www.hola.com/horizon/landscape/ad1cf35c7342-balon-medicinal-2t-t.jpg'
-    ];
+        const loadImage = event => {
+            const image = document.getElementById('profile-pic');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.onload = () => {
+                URL.revokeObjectURL(image.src);
+            };
+        };
 
-    let currentHeroIndex = 0;
+        document.getElementById('profile-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Perfil actualizado con éxito.');
+            
+            // Redirigir a la encuesta después de la actualización
+            window.location.href = 'survey.html';
+        });
+    </script>
 
-    function changeHeroBackground() {
-      document.getElementById('hero-section').style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
-      currentHeroIndex = (currentHeroIndex + 1) % heroImages.length; // Cambia al siguiente índice
-    }
-
-    // Cambia de imagen cada 5 segundos
-    setInterval(changeHeroBackground, 5000);
-    changeHeroBackground(); // Llama a la función al cargar la página
-
-    // Detectar desplazamiento y cambiar a fondo blanco cuando baja
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.scrollY || window.pageYOffset;
-      const benefitsTop = document.getElementById('benefits').offsetTop;
-
-      if (scrollPosition >= benefitsTop - 50) {
-        document.body.classList.add('white-background');
-      } else {
-        document.body.classList.remove('white-background');
-      }
-    });
-
-    // Desplazar hacia abajo al hacer clic en el botón "↓"
-    document.getElementById('scroll-down').addEventListener('click', function() {
-      const section = document.getElementById('benefits');
-      section.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
 </body>
+
 </html>
