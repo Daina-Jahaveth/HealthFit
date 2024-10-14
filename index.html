@@ -4,27 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstra<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+    <title>HealthFit - Planificador de Dieta y Ejercicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f4f4;
-            color: #343a40;
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
         }
 
-        /* Header */
         header {
             background-color: #000;
             padding: 10px 20px;
@@ -33,6 +23,7 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         header .navbar-brand {
@@ -40,11 +31,14 @@
             font-weight: bold;
             font-size: 1.5rem;
             text-align: center;
+            transition: opacity 0.3s;
         }
 
         header .nav {
             display: flex;
             justify-content: flex-end;
+            opacity: 1;
+            transition: opacity 0.3s;
         }
 
         header .nav-link {
@@ -52,101 +46,161 @@
             margin-left: 15px;
         }
 
-        /* Centralize Form */
-        .container {
-            margin-top: 100px;
+        /* Hero Section */
+        #hero-section {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        .form-container {
-            max-width: 450px;
-            width: 100%;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
+            background-image: url('https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
             text-align: center;
-            color: #ff9800;
-            margin-bottom: 30px;
+            position: relative;
+            transition: background-image 1s ease-in-out;
         }
 
-        .form-label {
+        #hero-section h1 {
+            font-size: 4rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .form-control {
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 12px 15px;
-            font-size: 16px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+        #hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .btn-warning {
+        .btn-hero {
             background-color: #ff9800;
             color: #fff;
-            padding: 10px 15px;
+            padding: 15px 30px;
+            font-size: 1.25rem;
             border: none;
-            border-radius: 5px;
-            width: 100%;
-            font-size: 18px;
             transition: background-color 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-warning:hover {
+        .btn-hero:hover {
             background-color: #e68a00;
         }
 
-        /* Profile Picture */
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            cursor: pointer;
-            transition: box-shadow 0.3s ease;
-            display: block;
+        /* Te Puede Interesar Section */
+        #te-puede-interesar {
+            padding: 60px 0;
+            background-color: #f8f9fa;
             position: relative;
-            background-color: #eaeaea;
         }
 
-        .profile-picture:hover {
-            box-shadow: 0px 0px 15px rgba(255, 152, 0, 0.8);
+        #te-puede-interesar .interests-title {
+            color: #ff9800;
+            margin-bottom: 40px;
         }
 
-        .edit-icon {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 25px;
-            height: 25px;
+        .interest-container {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .interest-list {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .interest-card {
+            border-radius: 15px;
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            width: 300px;
+        }
+
+        .interest-card img {
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .interest-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .interest-card .card-body {
+            padding: 15px;
+        }
+
+        /* Flechas de navegación */
+        .arrow {
             cursor: pointer;
-            fill: #000;
-            opacity: 0.8;
-            transition: transform 0.2s, opacity 0.2s;
+            font-size: 2rem;
+            color: #ff9800;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
         }
 
-        .edit-icon:hover {
-            transform: scale(1.1);
-            opacity: 1;
+        .arrow.left {
+            left: 10px;
         }
 
-        /* Gender Field */
-        .form-check {
-            margin-bottom: 20px;
+        .arrow.right {
+            right: 10px;
         }
 
-        .form-check-input {
-            margin-right: 10px;
+        /* Benefits Section */
+        #benefits {
+            padding: 60px 0;
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #benefits h2 {
+            color: #ff9800;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            display: flex;
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: none;
+            border: none;
+            overflow: hidden;
+        }
+
+        .info-card img {
+            flex: 1;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .info-card .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -166,273 +220,150 @@
                     <li class="nav-item"><a class="nav-link" href="care.html">Cuidado Médico</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html">Mi Perfil</a></li>
                 </ul>
-            </nav>
-        </div>
     </header>
 
-    <main class="container">
-        <div class="form-container text-center">
-            <h2>Mi Perfil</h2>
-
-            <!-- Profile Picture -->
-            <div style="position: relative;">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                    alt="Foto de Perfil" class="profile-picture" id="profile-pic">
-                <svg class="edit-icon" onclick="document.getElementById('upload-image').click();" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    <path d="M3 17.25V21h3.75l11.7-11.7-3.75-3.75L3 17.25zm15.6-9.6c.39-.39.39-1.02 0-1.41l-1.5-1.5c-.39-.39-1.02-.39-1.41 0l-1.5 1.5 3.75 3.75 1.5-1.5z" />
-                </svg>
-            </div>
-
-            <!-- Campo para subir imagen -->
-            <input type="file" id="upload-image" accept="image/*" onchange="loadImage(event)" style="display: none;">
-
-            <form id="profile-form">
-                <!-- First Name Field -->
-                <label for="first-name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Nombre" required>
-
-                <!-- Last Name Field -->
-                <label for="last-name" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Apellido" required>
-
-                <!-- Gender Selection -->
-                <div class="mb-3">
-                    <label class="form-label">Género</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="male" value="Hombre">
-                        <label class="form-check-label" for="male">Hombre</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="Mujer">
-                        <label class="form-check-label" for="female">Mujer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="other" value="Otro">
-                        <label class="form-check-label" for="other">Otro</label>
-                    </div>
-                </div>
-
-                <!-- Birthdate Field -->
-                <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-control" id="birthdate" placeholder="Selecciona tu fecha" required>
-
-                <!-- Reminder Checkbox -->
-                <div class="form-check mb-3">
-                    <input type="checkbox" class="form-check-input" id="reminder">
-                    <label class="form-check-label" for="reminder">Quiero ser recordado de realizar mi rutina diaria</label>
-                </div>
-
-                <button type="submit" class="btn btn-warning">Actualizar Perfil</button>
-            </form>
+    <!-- HERO SECTION -->
+    <section id="hero-section">
+        <div>
+            <h1>¡Bienvenido a HealthFit!</h1>
+            <p>Comienza a mejorar tu salud con un plan adaptado a ti.</p>
+            <a href="profile.html" class="btn btn-hero">Ir al Perfil de Registro</a>
         </div>
-    </main>
+    </section>
+
+    <!-- TE PUEDE INTERESAR SECTION -->
+    <section id="te-puede-interesar" class="text-center">
+        <div class="container">
+            <h2 class="interests-title">Te Puede Interesar</h2>
+            <span class="arrow left">&#9664;</span>
+            <div class="interest-container">
+                <div class="interest-list">
+                    <div class="interest-card">
+                        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+                        <div class="card-body">
+                            <h4 class="card-title">Ejercicios Básicos</h4>
+                            <p class="card-text">Accede a una lista completa de ejercicios recomendados por HealthFit.</p>
+                            <a href="ejercicios.html" class="btn btn-warning">Ver Ejercicios</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://extraconfidencial.com/wp-content/uploads/2024/03/nutricion-deporte.jpeg" alt="Información Científica">
+                        <div class="card-body">
+                            <h4 class="card-title">Informacion Nutrimental y fisica</h4>
+                            <p class="card-text">Consulta estudios y artículos sobre nutrición y ejercicio físico.</p>
+                            <a href="informacion.html" class="btn btn-warning">Más Información</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://content.elmueble.com/medio/2023/02/22/recetas-saludables-y-faciles-de-hacer_6642d00c_230222164322_1200x630.jpg" alt="Recetas Saludables">
+                        <div class="card-body">
+                            <h4 class="card-title">Recetas Saludables</h4>
+                            <p class="card-text">Descubre deliciosas recetas para mantenerte en forma.</p>
+                            <a href="recetas.html" class="btn btn-warning">Ver Recetas</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://www.danielcolombo.com/wp-content/uploads/2020/12/Motivaci%C3%B3n-DC-1024x576.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title">¡motivate!</h4>
+                            <p class="card-text">Motivación y bienestar emocional para alcanzar tus metas fitness.</p>
+                            <a href="psicologia.html" class="btn btn-warning">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="interest-card">
+                        <img src="https://th.bing.com/th/id/R.2cc99df33cafb2adf8f2fa4b5159b7a8?rik=pE6oDla8NvFJSQ&pid=ImgRaw&r=0" alt="Temas Fitness">
+                        <div class="card-body">
+                            <h4 class="card-title">FitnessWeb</h4>
+                            <p class="card-text">Consejos prácticos sobre entrenamientos y vida fitness de mas gente.</p>
+                            <a href="fitness.html" class="btn btn-warning">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="arrow right">&#9654;</span>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="benefits" class="text-center">
+        <div class="container">
+            <h2>Lo que te brindamos en HealthFit</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
+                        <div class="card-body">
+                            <h4 class="card-title">Planes Personalizados</h4>
+                            <p class="card-text">Diseñados según tus necesidades y objetivos de salud.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
+                        <div class="card-body">
+                            <h4 class="card-title">Monitoreo en Tiempo Real</h4>
+                            <p class="card-text">Seguimiento de tus progresos y ajustes en tu plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg" alt="Asesoría Profesional">
+                        <div class="card-body">
+                            <h4 class="card-title">Asesoría Profesional</h4>
+                            <p class="card-text">Consejos y apoyo de nutricionistas y entrenadores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 HealthFit. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
     <script>
-        // Cargar la imagen seleccionada
-        function loadImage(event) {
-            const img = document.getElementById('profile-pic');
-            const file = event.target.files[0];
-            const reader = new FileReader();
+        // Array de imágenes de fondo para el hero-section
+        const heroImages = [
+            'https://www.elindependiente.com/wp-content/uploads/2023/07/en-cuanto-tiempo-se-nota-el-gimnasio-1.png',
+            'https://png.pngtree.com/background/20230425/original/pngtree-male-athlete-running-on-a-running-track-picture-image_2469765.jpg',
+            'https://media.gq.com.mx/photos/5e4ebbde2ac66b000952c868/4:3/w_1883,h_1412,c_limit/GettyImages-590575189.jpg',
+            'https://www.hola.com/horizon/landscape/ad1cf35c7342-balon-medicinal-2t-t.jpg'
+        ];
 
-            reader.onload = function (e) {
-                img.src = e.target.result;
-                localStorage.setItem('profilePic', e.target.result); // Guardar en localStorage
-            }
+        let currentHeroIndex = 0;
 
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+        function changeHeroBackground() {
+            document.getElementById('hero-section').style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
+            currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
         }
 
-        // Flatpickr configuración para la fecha de nacimiento
-        flatpickr("#birthdate", {
-            dateFormat: "Y-m-d",
-            maxDate: "today",
-            locale: {
-                firstDayOfWeek: 1
+        setInterval(changeHeroBackground, 5000);
+        changeHeroBackground();
+
+        // Navegación horizontal en la sección "Te Puede Interesar"
+        const interestList = document.querySelector('.interest-list');
+        let currentPosition = 0;
+
+        document.querySelector('.arrow.left').addEventListener('click', function () {
+            if (currentPosition < 0) {
+                currentPosition += 320;
+                interestList.style.transform = `translateX(${currentPosition}px)`;
             }
         });
 
-        // Guardar datos en localStorage
-        document.getElementById('profile-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const birthdate = document.getElementById('birthdate').value;
-            const reminder = document.getElementById('reminder').checked;
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-
-            const userData = { firstName, lastName, birthdate, gender, reminder };
-            localStorage.setItem('userData', JSON.stringify(userData));
-
-            alert('Perfil actualizado correctamente');
-            window.location.href = 'survey.html'; // Redirigir a la página de encuesta
+        document.querySelector('.arrow.right').addEventListener('click', function () {
+            if (currentPosition > -960) {
+                currentPosition -= 320;
+                interestList.style.transform = `translateX(${currentPosition}px)`;
+            }
         });
-
-        // Cargar imagen y datos al cargar la página
-        window.onload = function () {
-            const savedProfilePic = localStorage.getItem('profilePic');
-            if (savedProfilePic) {
-                document.getElementById('profile-pic').src = savedProfilePic;
-            }
-
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            if (userData) {
-                document.getElementById('first-name').value = userData.firstName;
-                document.getElementById('last-name').value = userData.lastName;
-                document.getElementById('birthdate').value = userData.birthdate;
-                document.getElementById(userData.gender.toLowerCase()).checked = true;
-                document.getElementById('reminder').checked = userData.reminder;
-            }
-        }
     </script>
 </body>
 
 </html>
 
-    </script>
-</body>
-
-</html>p.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <style>
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .edit-icon {
-            position: absolute;
-            top: 120px;
-            left: 85px;
-            cursor: pointer;
-        }
-
-        /* Estilos del header */
-        header {
-            background-color: #000; /* Color negro */
-            padding: 10px 0;
-        }
-
-        header a.navbar-brand, 
-        header .nav-link {
-            color: white !important; /* Texto blanco */
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- HEADER -->
-    <header>
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">HealthFit</a>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tracking.html">Monitoreo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="plan.html">Plan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="care.html">Cuidado Médico</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html">Mi Perfil</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- FORMULARIO DE REGISTRO -->
-    <main class="container">
-        <div class="form-container text-center">
-            <h2>Mi Perfil</h2>
-
-            <!-- Profile Picture -->
-            <div style="position: relative;">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                    alt="Foto de Perfil" class="profile-picture" id="profile-pic">
-                <svg class="edit-icon" onclick="document.getElementById('upload-image').click();" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24" width="24" height="24" fill="#007bff">
-                    <path d="M3 17.25V21h3.75l11.7-11.7-3.75-3.75L3 17.25zm15.6-9.6c.39-.39.39-1.02 0-1.41l-1.5-1.5c-.39-.39-1.02-.39-1.41 0l-1.5 1.5 3.75 3.75 1.5-1.5z" />
-                </svg>
-            </div>
-
-            <!-- Campo para subir imagen -->
-            <input type="file" id="upload-image" accept="image/*" onchange="loadImage(event)" style="display: none;">
-
-            <form id="profile-form">
-                <!-- Campos del formulario -->
-                <label for="first-name" class="form-label">Nombre</label>
-                <input type="text" class="form-control mb-3" id="first-name" placeholder="Nombre" required>
-
-                <label for="last-name" class="form-label">Apellido</label>
-                <input type="text" class="form-control mb-3" id="last-name" placeholder="Apellido" required>
-
-                <div class="mb-3">
-                    <label class="form-label">Género</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="male" value="Hombre" required>
-                        <label class="form-check-label" for="male">Hombre</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="Mujer" required>
-                        <label class="form-check-label" for="female">Mujer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="other" value="Otro" required>
-                        <label class="form-check-label" for="other">Otro</label>
-                    </div>
-                </div>
-
-                <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-control mb-3" id="birthdate" placeholder="Selecciona tu fecha" required>
-
-                <div class="form-check mb-3">
-                    <input type="checkbox" class="form-check-input" id="reminder">
-                    <label class="form-check-label" for="reminder">Quiero ser recordado de realizar mi rutina diaria</label>
-                </div>
-
-                <button type="submit" class="btn btn-warning">Actualizar Perfil</button>
-            </form>
-        </div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr("#birthdate", { dateFormat: "Y-m-d" });
-
-        const loadImage = event => {
-            const image = document.getElementById('profile-pic');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            image.onload = () => {
-                URL.revokeObjectURL(image.src);
-            };
-        };
-
-        document.getElementById('profile-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            alert('Perfil actualizado con éxito.');
-            
-            // Redirigir a la encuesta después de la actualización
-            window.location.href = 'survey.html';
-        });
-    </script>
-
-</body>
-
-</html>
