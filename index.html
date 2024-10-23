@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planificador de Dieta y Ejercicio</title>
+  <title>Planificador de Dieta y Ejercicio | HealthFit</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f0f4f8;
-      color: #333;
+      background-color: #121212;
+      color: #f0f0f0;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     .app-header {
-      background-color: #28a745;
-      color: white;
-      padding: 15px 20px;
+      background-color: #1f1f1f;
+      color: #fff;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #333;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .app-header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 600;
       margin: 0;
+      color: #00ff88;
     }
 
     .app-header button {
-      background-color: #ffcc00;
+      background-color: #00ff88;
       border: none;
       padding: 10px 25px;
-      border-radius: 50px;
-      color: #333;
+      color: #1f1f1f;
       font-weight: 600;
       font-size: 1rem;
       transition: background-color 0.3s ease;
@@ -44,76 +46,80 @@
     }
 
     .app-header button:hover {
-      background-color: #ffc107;
+      background-color: #00cc6b;
     }
 
     .app-content {
-      padding: 30px;
+      padding: 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
     .app-card {
-      background-color: white;
-      border-radius: 15px;
+      background-color: #1f1f1f;
+      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .app-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
     }
 
     .app-card img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     .app-card h4 {
       margin-top: 15px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      color: #333;
+      color: #00ff88;
     }
 
     .app-card p {
       font-size: 1rem;
-      color: #666;
+      color: #bbbbbb;
       margin: 10px 0 20px 0;
     }
 
     .app-card button {
-      background-color: #28a745;
+      background-color: #00ff88;
       border: none;
       padding: 10px;
-      color: white;
-      border-radius: 50px;
+      color: #1f1f1f;
+      border-radius: 30px;
       cursor: pointer;
       font-size: 1rem;
       transition: background-color 0.3s ease;
     }
 
     .app-card button:hover {
-      background-color: #218838;
+      background-color: #00cc6b;
     }
 
     .app-footer {
-      background-color: #333;
-      color: white;
+      background-color: #1f1f1f;
+      color: #bbb;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
+      font-size: 0.9rem;
       position: fixed;
       bottom: 0;
       width: 100%;
-      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 768px) {
+      .app-content {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -161,6 +167,12 @@
   <script>
     function redirectToProfile() {
       window.location.href = 'profile.html';
+    }
+  </script>
+
+</body>
+</html>
+
     }
   </script>
 
