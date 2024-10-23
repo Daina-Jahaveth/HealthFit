@@ -3,97 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planificador de Dieta y Ejercicio | HealthFit</title>
+  <title>HealthFit - Planificador de Dieta y Ejercicio</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #121212;
+      background-color: #1a1a1a;
       color: #f0f0f0;
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
     }
 
     .app-header {
-      background-color: #1f1f1f;
+      background-color: #111;
       color: #fff;
       padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     .app-header h1 {
       font-size: 2rem;
-      font-weight: 600;
-      margin: 0;
-      color: #00ff88;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
 
     .app-header button {
-      background-color: #00ff88;
+      background-color: #ffcc00;
       border: none;
       padding: 10px 25px;
-      color: #1f1f1f;
+      color: #333;
       font-weight: 600;
       font-size: 1rem;
-      transition: background-color 0.3s ease;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
     }
 
     .app-header button:hover {
-      background-color: #00cc6b;
+      background-color: #ffc107;
     }
 
     .app-content {
-      padding: 40px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 30px;
+      justify-content: center;
     }
 
     .app-card {
-      background-color: #1f1f1f;
+      background-color: #222;
       border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
     }
 
     .app-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
     .app-card img {
       width: 100%;
-      height: 160px;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
     }
 
     .app-card h4 {
-      margin-top: 15px;
-      font-size: 1.4rem;
+      margin-top: 20px;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: #00ff88;
+      color: #f0f0f0;
     }
 
     .app-card p {
       font-size: 1rem;
-      color: #bbbbbb;
-      margin: 10px 0 20px 0;
+      color: #999;
+      margin: 15px 0;
     }
 
     .app-card button {
-      background-color: #00ff88;
+      background-color: #28a745;
       border: none;
-      padding: 10px;
-      color: #1f1f1f;
+      padding: 12px 20px;
+      color: white;
       border-radius: 30px;
       cursor: pointer;
       font-size: 1rem;
@@ -101,77 +107,75 @@
     }
 
     .app-card button:hover {
-      background-color: #00cc6b;
+      background-color: #218838;
     }
 
     .app-footer {
-      background-color: #1f1f1f;
-      color: #bbb;
+      background-color: #111;
+      color: #f0f0f0;
       text-align: center;
       padding: 15px;
       font-size: 0.9rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      border-top: 1px solid #333;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+      margin-top: 40px;
     }
 
-    @media (max-width: 768px) {
-      .app-content {
-        padding: 20px;
-      }
+    .app-footer span {
+      color: #ffcc00;
     }
   </style>
 </head>
 <body>
 
-  <header class="app-header">
-    <h1>HealthFit</h1>
-    <button onclick="redirectToProfile()">Mi Perfil</button>
-  </header>
+  <div class="container">
+    <header class="app-header">
+      <h1>HealthFit</h1>
+      <button onclick="redirectToProfile()">Mi Perfil</button>
+    </header>
 
-  <main class="app-content">
-    <div class="app-card">
-      <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
-      <h4>Planes Personalizados</h4>
-      <p>Diseñados según tus necesidades y objetivos de salud.</p>
-      <button>Ver Plan</button>
-    </div>
+    <main class="app-content">
+      <div class="app-card">
+        <img src="https://img.freepik.com/foto-gratis/jovenes-amigos-corriendo-maraton_329181-16172.jpg" alt="Planes Personalizados">
+        <h4>Planes Personalizados</h4>
+        <p>Diseñados según tus necesidades y objetivos de salud.</p>
+        <button>Ver Plan</button>
+      </div>
 
-    <div class="app-card">
-      <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
-      <h4>Monitoreo en Tiempo Real</h4>
-      <p>Seguimiento de tus progresos y ajustes en tu plan.</p>
-      <button>Ver Monitoreo</button>
-    </div>
+      <div class="app-card">
+        <img src="https://danielpereiracoach.com/wp-content/uploads/2020/09/12.png" alt="Monitoreo en Tiempo Real">
+        <h4>Monitoreo en Tiempo Real</h4>
+        <p>Seguimiento de tus progresos y ajustes en tu plan.</p>
+        <button>Ver Monitoreo</button>
+      </div>
 
-    <div class="app-card">
-      <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg" alt="Asesoría Profesional">
-      <h4>Asesoría Profesional</h4>
-      <p>Consejos y apoyo de nutricionistas y entrenadores.</p>
-      <button>Ver Asesoría</button>
-    </div>
+      <div class="app-card">
+        <img src="https://img.freepik.com/foto-gratis/concepto-dieta-cientifica-comida-sana_23-2148193255.jpg?size=626&ext=jpg" alt="Asesoría Profesional">
+        <h4>Asesoría Profesional</h4>
+        <p>Consejos y apoyo de nutricionistas y entrenadores.</p>
+        <button>Ver Asesoría</button>
+      </div>
 
-    <div class="app-card">
-      <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
-      <h4>Ejercicios Básicos</h4>
-      <p>Accede a una lista completa de ejercicios recomendados.</p>
-      <button>Ver Ejercicios</button>
-    </div>
-  </main>
+      <div class="app-card">
+        <img src="https://img.freepik.com/fotos-premium/instrumento-utilizado-ejercicio-fondo-pantalla-creativo-fotografia-alta-definicion_993236-12147.jpg" alt="Ejercicios Básicos">
+        <h4>Ejercicios Básicos</h4>
+        <p>Accede a una lista completa de ejercicios recomendados.</p>
+        <button>Ver Ejercicios</button>
+      </div>
+    </main>
 
-  <footer class="app-footer">
-    © 2024 HealthFit - Tu aliado en salud
-  </footer>
+    <footer class="app-footer">
+      <p>© 2024 <span>HealthFit</span> - Tu aliado en salud</p>
+    </footer>
+  </div>
 
   <script>
     function redirectToProfile() {
       window.location.href = 'profile.html';
     }
   </script>
-
 </body>
 </html>
+
 
     }
   </script>
